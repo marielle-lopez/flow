@@ -1,34 +1,35 @@
 import './App.css';
 import { useState, useEffect } from "react";
-import { getAllTasks, getTaskById } from './services/task-services';
-
-interface Task {
-  id: number,
-  title: string,
-  description: string,
-  createdAt: Date,
-  dueAt: Date,
-  category: string
-}
+import { createTask, getAllTasks, getTaskById } from './services/task-services';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [task, setTask] = useState<Task>();
+  const [createdTask, setCreatedTask] = useState<Task>();
 
   useEffect(() => {
-    getAllTasks().then((res) => setTasks(res))
+    getAllTasks().then((res) => setTasks(res));
   }, [])
 
-  const handleClick = () => {
-    getTaskById(1).then((res) => setTask(res))
+  const getFirstTask = () => {
+    getTaskById(1).then((res) => setTask(res));
+  }
+
+  const addTask = () => {
+    createTask().then((res) => setCreatedTask(res));
   }
 
   return (
     <>
       <h1>Hello universe!</h1>
-      <button onClick={handleClick}>Get first task</button>
+      <h2>All Tasks</h2>
       {tasks && tasks.map((task) => <p>{task.title}</p>)}
+
+      <button onClick={getFirstTask}>Get first task</button>
       {task && <p>{task.title}</p>}
+
+      <button onClick={addTask}>Create test task</button>
+      {createdTask && <p>{createdTask.title}</p>}
     </>
   )
 }
