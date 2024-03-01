@@ -28,3 +28,9 @@ export const createTask = async () => {
     const data = await response.json();
     return data;
 }
+
+export const deleteTaskById = async (id: number) => {
+    const response = await fetch(`http://localhost:8080/tasks/${id}`, {
+        method: 'DELETE',
+    });
+}

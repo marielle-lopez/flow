@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from "react";
-import { createTask, getAllTasks, getTaskById } from './services/task-services';
+import { deleteTaskById, createTask, getAllTasks, getTaskById } from './services/task-services';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -19,6 +19,10 @@ function App() {
     createTask().then((res) => setCreatedTask(res));
   }
 
+  const deleteTask = () => {
+    deleteTaskById(3);
+  }
+
   return (
     <>
       <h1>Hello universe!</h1>
@@ -30,6 +34,8 @@ function App() {
 
       <button onClick={addTask}>Create test task</button>
       {createdTask && <p>{createdTask.title}</p>}
+
+      <button onClick={deleteTask}>Delete second task</button>
     </>
   )
 }
