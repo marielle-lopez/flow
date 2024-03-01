@@ -5,4 +5,4 @@
 ### 29 February 2024
 
 - Finished setting up the Spring backend to handle `GET`, `POST`, `PATCH`, and `DELETE` HTTP requests
-- Set up React with Typescript for the frontend
+- Set up React with Typescript for the frontend and installed additional dependencies (React Spring, Tailwind CSS, React Hook Form, Zod, etc.)
