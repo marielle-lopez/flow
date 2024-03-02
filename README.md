@@ -10,6 +10,7 @@
 ### 2 March 2024
 
 - Re-did installation of Tailwind CSS and applied custom colours
+- Created a separate configuration file `WebConfig.java` to specify allowed origins of the backend
 
 ### 1 March 2024
 
