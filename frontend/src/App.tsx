@@ -6,6 +6,7 @@ import {
   getAllTasks,
   getTaskById,
 } from './services/task-services';
+import TaskForm from './components/TaskForm/TaskForm';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -41,6 +42,8 @@ function App() {
       {createdTask && <p>{createdTask.title}</p>}
 
       <button onClick={deleteTask}>Delete second task</button>
+
+      <TaskForm />
     </>
   );
 }
