@@ -29,11 +29,15 @@ function App() {
     deleteTaskById(3);
   };
 
+  const taskFormSubmit = (data: object) => {
+    console.log(data);
+  };
+
   return (
     <>
       <h1 className="text-3xl font-bold underline">Hello universe!</h1>
       <h2>All Tasks</h2>
-      {tasks && tasks.map((task) => <p>{task.title}</p>)}
+      {tasks && tasks.map((task) => <p key={task.id}>{task.title}</p>)}
 
       <button onClick={getFirstTask}>Get first task</button>
       {task && <p>{task.title}</p>}
@@ -43,7 +47,7 @@ function App() {
 
       <button onClick={deleteTask}>Delete second task</button>
 
-      <TaskForm />
+      <TaskForm taskFormSubmit={taskFormSubmit} />
     </>
   );
 }
