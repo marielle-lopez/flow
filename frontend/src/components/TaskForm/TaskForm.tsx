@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -21,8 +22,13 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm({ resolver: zodResolver(schema) });
+
+  useEffect(() => {
+    reset();
+  }, [isSubmitSuccessful]);
 
   return (
     <form onSubmit={handleSubmit(taskFormSubmit)}>
