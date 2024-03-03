@@ -1,8 +1,16 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ['"Inter"', ...defaultTheme.fontFamily.serif],
+        accent: 'MuseoModerno',
+      },
+    },
     colors: {
       shark: '#181A20',
       charade: '#262A34',
