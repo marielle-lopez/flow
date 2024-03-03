@@ -7,6 +7,13 @@ import {
   getTaskById,
 } from './services/task-services';
 import TaskForm from './components/TaskForm/TaskForm';
+import Sidebar from './components/Sidebar/Sidebar';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage.tsx';
+import TodayPage from './pages/TodayPage/TodayPage.tsx';
+import InboxPage from './pages/InboxPage/InboxPage.tsx';
+import PersonalPage from './pages/PersonalPage/PersonalPage.tsx';
+import WorkPage from './pages/WorkPage/WorkPage.tsx';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -35,7 +42,18 @@ function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello universe!</h1>
+      <BrowserRouter>
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/today" element={<TodayPage />} />
+          <Route path="/inbox" element={<InboxPage />} />
+          <Route path="/personal" element={<PersonalPage />} />
+          <Route path="/work" element={<WorkPage />} />
+        </Routes>
+      </BrowserRouter>
+
+      {/* <h1 className="text-3xl font-bold underline">Hello universe!</h1>
       <h2>All Tasks</h2>
       {tasks && tasks.map((task) => <p key={task.id}>{task.title}</p>)}
 
@@ -47,7 +65,7 @@ function App() {
 
       <button onClick={deleteTask}>Delete second task</button>
 
-      <TaskForm taskFormSubmit={taskFormSubmit} />
+      <TaskForm taskFormSubmit={taskFormSubmit} /> */}
     </>
   );
 }
