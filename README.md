@@ -1,4 +1,4 @@
-# Flow
+![Flow](./logo-md.png)
 
 ## To-Do
 
@@ -38,8 +38,8 @@
 
 ## Important Notes
 
-- Run frontend on port 5173 (alternative is to alter port number passed into `@CrossOrigin` annotation)
-  - Double check if `127.0.0.1` needs to be passed as well into the annotation just in case
+- Run frontend on port 5173
+  - Otherwise, add additional origins to `allowedOrigins` array in `backend/src/main/java/io/nology/flow/config/WebConfig.java`
 - Run backend on port 8080
 
 ## Resources
