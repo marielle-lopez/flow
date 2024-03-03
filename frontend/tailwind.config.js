@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Inter"', ...defaultTheme.fontFamily.serif],
+        sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
         accent: 'MuseoModerno',
       },
     },
