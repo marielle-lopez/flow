@@ -11,6 +11,8 @@
 
 - The frontend now uses React Hook Form to handle forms
 - Used Zod to validate data from form for creating a task
+- Running into an issue with applying a gradient colour to text using TailwindCSS
+  - Looked at various guides and all have the same code
 
 ### 2 March 2024
 
@@ -49,3 +51,4 @@
 - [Name that Color](https://chir.ag/projects/name-that-color/)
 - [How to pass function as a prop in React TypeScript](https://stackoverflow.com/questions/68895112/how-to-pass-function-as-a-prop-in-react-typescript)
 - [How to create a date object representing yesterday's date in single line](https://stackoverflow.com/questions/73770027/how-to-create-date-object-and-set-date-in-1-line-in-typescript)
+- [Text colour gradient with Tailwind CSS](https://daily-dev-tips.com/posts/making-gradient-text-with-tailwind-css/)
