@@ -2,6 +2,7 @@
 
 ## To-Do
 
+- Error handling in `task-services.tsx` and form validation
 - Isolate sensitive information specified in backend files
 - Find a way to use Tailwind CSS in a CSS file
 
@@ -13,6 +14,8 @@
 - Used Zod to validate data from form for creating a task
 - Running into an issue with applying a gradient colour to text using TailwindCSS
   - Looked at various guides and all have the same code
+- Constructed foundational sidebar component
+  - Added logo and links with corresponding icons
 
 ### 2 March 2024
 
@@ -45,6 +48,14 @@
 
 - [MuseoModerno](https://fonts.google.com/specimen/MuseoModerno)
 - [Inter](https://fonts.google.com/specimen/Inter)
+
+### Icons
+
+- [All](https://img.icons8.com/fluency-systems-regular/96/border-all--v1.png)
+- [Today](https://img.icons8.com/fluency-systems-regular/96/today.png)
+- [Inbox](https://img.icons8.com/fluency-systems-regular/96/inbox.png)
+- [Personal](https://img.icons8.com/fluency-systems-regular/96/private.png)
+- [Work](https://img.icons8.com/fluency-systems-regular/96/business--v1.png)
 
 ### Bits and Bobs
 
