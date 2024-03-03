@@ -7,6 +7,10 @@
 
 ## Task Completion History
 
+### 3 March 2024
+
+- The frontend now uses React Hook Form to handle forms
+
 ### 2 March 2024
 
 - Re-did installation of Tailwind CSS and applied custom colours
@@ -42,3 +46,4 @@
 ### Bits and Bobs
 
 - [Name that Color](https://chir.ag/projects/name-that-color/)
+- [How to pass function as a prop in React TypeScript](https://stackoverflow.com/questions/68895112/how-to-pass-function-as-a-prop-in-react-typescript)
