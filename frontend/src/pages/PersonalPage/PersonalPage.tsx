@@ -1,7 +1,7 @@
-import FlexWrapper from '../../containers/FlexWrapper/FlexWrapper';
+import MainWrapper from '../../containers/MainWrapper/MainWrapper';
 
 const PersonalPage = () => {
-  return <FlexWrapper>PersonalPage</FlexWrapper>;
+  return <MainWrapper>PersonalPage</MainWrapper>;
 };
 
 export default PersonalPage;

@@ -1,7 +1,7 @@
-import FlexWrapper from '../../containers/FlexWrapper/FlexWrapper';
+import MainWrapper from '../../containers/MainWrapper/MainWrapper';
 
 const InboxPage = () => {
-  return <FlexWrapper>InboxPage</FlexWrapper>;
+  return <MainWrapper>InboxPage</MainWrapper>;
 };
 
 export default InboxPage;

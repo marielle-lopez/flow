@@ -1,7 +1,7 @@
-import FlexWrapper from '../../containers/FlexWrapper/FlexWrapper';
+import MainWrapper from '../../containers/MainWrapper/MainWrapper';
 
 const WorkPage = () => {
-  return <FlexWrapper>WorkPage</FlexWrapper>;
+  return <MainWrapper>WorkPage</MainWrapper>;
 };
 
 export default WorkPage;

@@ -1,7 +1,7 @@
-import FlexWrapper from '../../containers/FlexWrapper/FlexWrapper';
+import MainWrapper from '../../containers/MainWrapper/MainWrapper';
 
 const TodayPage = () => {
-  return <FlexWrapper>TodayPage</FlexWrapper>;
+  return <MainWrapper>TodayPage</MainWrapper>;
 };
 
 export default TodayPage;
