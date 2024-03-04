@@ -8,7 +8,6 @@ const formStyles = `
 `;
 
 const inputStyles = `
-  text-river-bed 
   bg-charade 
   border-0 
   border-river-bed 
@@ -65,6 +64,7 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
           className={inputStyles + ' border-l border-r'}
           type="date"
           id="dueDate"
+          placeholder="dd/mm/yyyy"
           {...register('dueDate')}
         />
         {errors.dueDate?.message && <p>{errors.dueDate.message}</p>}
