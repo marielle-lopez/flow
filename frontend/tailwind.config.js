@@ -21,5 +21,5 @@ export default {
       aquamarine: '#69FFC2',
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
