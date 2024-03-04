@@ -3,16 +3,22 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
+const formStyles = `
+  flex 
+`;
+
 const inputStyles = `
-  rounded-md 
-  border-gray-200 
-  text-gray-800
+  text-river-bed 
+  bg-charade 
+  border-0 
+  border-river-bed 
+  placeholder-river-bed 
 `;
 
 const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
   const schema = z.object({
     title: z.string().min(1, { message: 'Title required ' }),
-    description: z.string(),
+    // description: z.string(),
     dueDate: z.coerce.date().min(new Date(Date.now() - 864e5), {
       message: 'Due date cannot be past',
     }),
@@ -31,19 +37,19 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
   }, [isSubmitSuccessful]);
 
   return (
-    <form onSubmit={handleSubmit(taskFormSubmit)}>
+    <form className={formStyles} onSubmit={handleSubmit(taskFormSubmit)}>
       <div>
-        <label htmlFor="title">Title</label>
         <input
-          className={inputStyles}
+          className={inputStyles + ' rounded-tl-full rounded-bl-full'}
           type="text"
           id="title"
+          placeholder="What's the next task?"
           {...register('title')}
         />
         {errors.title?.message && <p>{errors.title.message}</p>}
       </div>
 
-      <div>
+      {/* <div>
         <label htmlFor="desc">Description</label>
         <input
           className={inputStyles}
@@ -52,12 +58,11 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
           {...register('description')}
         />
         {errors.description?.message && <p>{errors.description.message}</p>}
-      </div>
+      </div> */}
 
       <div>
-        <label htmlFor="dueDate">Due Date</label>
         <input
-          className={inputStyles}
+          className={inputStyles + ' border-l border-r'}
           type="date"
           id="dueDate"
           {...register('dueDate')}
@@ -66,8 +71,11 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
       </div>
 
       <div>
-        <label htmlFor="category">Category</label>
-        <select className={inputStyles} id="category" {...register('category')}>
+        <select
+          className={inputStyles + ' rounded-tr-full rounded-br-full'}
+          id="category"
+          {...register('category')}
+        >
           <option value="personal">Personal</option>
           <option value="work">Work</option>
           <option value="university">University</option>
