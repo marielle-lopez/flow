@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import Button from '../Button/Button';
 
 const formStyles = `
   flex 
+  h-10 
 `;
 
 const inputStyles = `
@@ -83,7 +85,9 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
         {errors.category?.message && <p>{errors.category.message}</p>}
       </div>
 
-      <button>Add task</button>
+      <Button
+        icon={{ path: './src/assets/icons/plus.png', alt: 'Plus icon' }}
+      />
     </form>
   );
 };
