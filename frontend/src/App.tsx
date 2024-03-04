@@ -1,12 +1,10 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   deleteTaskById,
   createTask,
-  getAllTasks,
   getTaskById,
 } from './services/task-services';
-import TaskForm from './components/TaskForm/TaskForm';
 import Sidebar from './components/Sidebar/Sidebar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage.tsx';
@@ -19,10 +17,6 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [task, setTask] = useState<Task>();
   const [createdTask, setCreatedTask] = useState<Task>();
-
-  useEffect(() => {
-    getAllTasks().then((res) => setTasks(res));
-  }, []);
 
   const getFirstTask = () => {
     getTaskById(1).then((res) => setTask(res));
@@ -53,11 +47,11 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      {/* <h1 className="text-3xl font-bold underline">Hello universe!</h1>
-      <h2>All Tasks</h2>
-      {tasks && tasks.map((task) => <p key={task.id}>{task.title}</p>)}
+      {/* <h1 className="text-3xl font-bold underline">Hello universe!</h1> */}
+      {/* <h2>All Tasks</h2>
+      {tasks && tasks.map((task) => <p key={task.id}>{task.title}</p>)} */}
 
-      <button onClick={getFirstTask}>Get first task</button>
+      {/* <button onClick={getFirstTask}>Get first task</button>
       {task && <p>{task.title}</p>}
 
       <button onClick={addTask}>Create test task</button>
