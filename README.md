@@ -18,6 +18,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 
 - Changed the frontend page title and icon
 - Updated styling of `TaskForm` component according to design mockup
+- Created `Button` component which can take in a string `label` or object (of type `Icon`) `icon`
 
 ### 3 March 2024
 
@@ -67,6 +68,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - [Inbox](https://img.icons8.com/fluency-systems-regular/96/inbox.png)
 - [Personal](https://img.icons8.com/fluency-systems-regular/96/private.png)
 - [Work](https://img.icons8.com/fluency-systems-regular/96/business--v1.png)
+- [Plus](https://img.icons8.com/fluency-systems-regular/96/000000/plus-math--v1.png)
 
 ### Bits and Bobs
 
@@ -74,3 +76,4 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - [How to pass function as a prop in React TypeScript](https://stackoverflow.com/questions/68895112/how-to-pass-function-as-a-prop-in-react-typescript)
 - [How to create a date object representing yesterday's date in single line](https://stackoverflow.com/questions/73770027/how-to-create-date-object-and-set-date-in-1-line-in-typescript)
 - [Text colour gradient with Tailwind CSS](https://daily-dev-tips.com/posts/making-gradient-text-with-tailwind-css/)
+- [How to declare a type as nullable in TypeScript](https://stackoverflow.com/questions/17220114/how-to-declare-a-type-as-nullable-in-typescript)
