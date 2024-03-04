@@ -14,6 +14,11 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 
 ## Task Completion History
 
+### 4 March 2024
+
+- Changed the frontend page title and icon
+- Updated styling of `TaskForm` component according to design mockup
+
 ### 3 March 2024
 
 - The frontend now uses React Hook Form to handle forms
