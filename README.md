@@ -14,6 +14,10 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 
 ## Task Completion History
 
+### 5 March 2024
+
+- Retrieved relevant data from the backend in a specific page component (e.g., all tasks would be fetched and displayed on the homepage)
+
 ### 4 March 2024
 
 - Changed the frontend page title and icon
