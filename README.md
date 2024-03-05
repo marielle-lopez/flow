@@ -74,6 +74,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - [Personal](https://img.icons8.com/fluency-systems-regular/96/private.png)
 - [Work](https://img.icons8.com/fluency-systems-regular/96/business--v1.png)
 - [Plus](https://img.icons8.com/fluency-systems-regular/96/000000/plus-math--v1.png)
+- [Cross](https://img.icons8.com/fluency-systems-filled/48/multiply.png)
 
 ### Bits and Bobs
 
