@@ -1,6 +1,14 @@
 import TaskItem from '../../components/TaskItem/TaskItem';
 
-const TaskList = ({ tasks }: { tasks: Task[] }) => {
+const TaskList = ({
+  tasks,
+  refresh,
+  setRefresh,
+}: {
+  tasks: Task[];
+  refresh: number;
+  setRefresh: (refresh: number) => void;
+}) => {
   const taskListStyles = `
     flex 
     flex-col 
@@ -10,7 +18,12 @@ const TaskList = ({ tasks }: { tasks: Task[] }) => {
   return (
     <div className={taskListStyles}>
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <TaskItem
+          key={task.id}
+          task={task}
+          refresh={refresh}
+          setRefresh={setRefresh}
+        />
       ))}
     </div>
   );
