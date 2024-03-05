@@ -17,6 +17,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 ### 5 March 2024
 
 - Retrieved relevant data from the backend in a specific page component (e.g., all tasks would be fetched and displayed on the homepage)
+- Created `TaskItem` and `Checkbox` component which go hand-in-hand, functional in the way that when a user clicks the checkbox the task is 'crossed off'
 
 ### 4 March 2024
 
