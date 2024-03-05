@@ -1,15 +1,31 @@
 import { useState } from 'react';
 import Checkbox from '../Checkbox/Checkbox';
+import { deleteTaskById } from '../../services/task-services';
 
-const TaskItem = ({ task }: { task: Task }) => {
+const TaskItem = ({
+  task,
+
+  refresh,
+  setRefresh,
+}: {
+  task: Task;
+  refresh: number;
+  setRefresh: (refresh: number) => void;
+}) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
     setChecked(!checked);
+
+    // TODO: update task's 'completed' property
   };
 
   const handleDelete = () => {
     console.log('Delete button clicked!');
+    deleteTaskById(task.id).then(() => {
+      console.log(`Task '${task.title}' with ID ${task.id} deleted.`);
+      return setRefresh((refresh += 1));
+    });
   };
 
   const taskItemStyles = `
