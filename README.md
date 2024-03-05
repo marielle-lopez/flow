@@ -18,6 +18,8 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 
 - Retrieved relevant data from the backend in a specific page component (e.g., all tasks would be fetched and displayed on the homepage)
 - Created `TaskItem` and `Checkbox` component which go hand-in-hand, functional in the way that when a user clicks the checkbox the task is 'crossed off'
+- Enabled users to delete tasks
+  - The only qualm I have with my current implementation is the case of prop drilling, where I have a piece of state `refresh` and its setter being passed from the page component, to `TaskList`, then `TaskItem`
 
 ### 4 March 2024
 
