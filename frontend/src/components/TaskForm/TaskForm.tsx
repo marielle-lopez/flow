@@ -6,7 +6,14 @@ import Button from '../Button/Button';
 
 const formStyles = `
   flex 
+  gap-4 
   h-10 
+  w-full 
+`;
+
+const inputWrapperStyles = `
+  flex 
+  grow 
 `;
 
 const inputStyles = `
@@ -39,18 +46,21 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
 
   return (
     <form className={formStyles} onSubmit={handleSubmit(taskFormSubmit)}>
-      <div>
-        <input
-          className={inputStyles + ' rounded-tl-full rounded-bl-full'}
-          type="text"
-          id="title"
-          placeholder="What's the next task?"
-          {...register('title')}
-        />
-        {errors.title?.message && <p>{errors.title.message}</p>}
-      </div>
+      <div className={inputWrapperStyles}>
+        <div className="flex grow">
+          <input
+            className={
+              inputStyles + ' rounded-tl-full rounded-bl-full grow pl-6'
+            }
+            type="text"
+            id="title"
+            placeholder="What's the next task?"
+            {...register('title')}
+          />
+          {errors.title?.message && <p>{errors.title.message}</p>}
+        </div>
 
-      {/* <div>
+        {/* <div>
         <label htmlFor="desc">Description</label>
         <input
           className={inputStyles}
@@ -61,28 +71,29 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
         {errors.description?.message && <p>{errors.description.message}</p>}
       </div> */}
 
-      <div>
-        <input
-          className={inputStyles + ' border-l border-r'}
-          type="date"
-          id="dueDate"
-          placeholder="dd/mm/yyyy"
-          {...register('dueDate')}
-        />
-        {errors.dueDate?.message && <p>{errors.dueDate.message}</p>}
-      </div>
+        <div>
+          <input
+            className={inputStyles + ' border-l border-r'}
+            type="date"
+            id="dueDate"
+            placeholder="dd/mm/yyyy"
+            {...register('dueDate')}
+          />
+          {errors.dueDate?.message && <p>{errors.dueDate.message}</p>}
+        </div>
 
-      <div>
-        <select
-          className={inputStyles + ' rounded-tr-full rounded-br-full'}
-          id="category"
-          {...register('category')}
-        >
-          <option value="personal">Personal</option>
-          <option value="work">Work</option>
-          <option value="university">University</option>
-        </select>
-        {errors.category?.message && <p>{errors.category.message}</p>}
+        <div>
+          <select
+            className={inputStyles + ' rounded-tr-full rounded-br-full'}
+            id="category"
+            {...register('category')}
+          >
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
+            <option value="university">University</option>
+          </select>
+          {errors.category?.message && <p>{errors.category.message}</p>}
+        </div>
       </div>
 
       <Button

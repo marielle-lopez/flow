@@ -4,8 +4,9 @@ const Sidebar = () => {
   const sidebarWrapperStyles = `
   flex 
   flex-col 
+  p-12 
   w-1/5 
-  bg-charade
+  bg-charade 
 `;
 
   const logoStyles = `

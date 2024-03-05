@@ -14,8 +14,9 @@ const TaskItem = ({ task }: { task: Task }) => {
 
   const taskItemStyles = `
     flex 
-    items-center 
+    justify-between 
     h-11 
+    w-full 
   `;
 
   const taskCompletedStyles = `
@@ -28,8 +29,10 @@ const TaskItem = ({ task }: { task: Task }) => {
 
   return (
     <div className={taskItemStyles}>
-      <Checkbox handleChange={handleChange} />
-      <p className={checked ? taskCompletedStyles : ''}>{task.title}</p>
+      <div className="flex items-center gap-4">
+        <Checkbox handleChange={handleChange} />
+        <p className={checked ? taskCompletedStyles : ''}>{task.title}</p>
+      </div>
       <button className={deleteBtnStyles} onClick={handleDelete}>
         <img
           className="h-1/2"

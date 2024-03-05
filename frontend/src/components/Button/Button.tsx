@@ -17,11 +17,13 @@ const Button = ({ label = null, icon = null }: ButtonProps) => {
     bg-gradient-to-br 
     from-hopbush 
     via-chetwode 
-    to-aquamarine 
+    to-aquamarine  
+    h-full 
   `;
 
   const iconStyles = `
-    h-full 
+    object-contain 
+    h-full  
   `;
 
   return (
