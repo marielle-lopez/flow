@@ -48,7 +48,7 @@ const TaskItem = ({
       dateStyle: 'short',
     };
 
-    return formattedDate.toLocaleString('en-US', options);
+    return formattedDate.toLocaleString('en-GB', options);
   };
 
   console.log(formatDate(task.dueAt));
