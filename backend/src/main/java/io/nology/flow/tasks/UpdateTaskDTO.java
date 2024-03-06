@@ -12,8 +12,11 @@ public class UpdateTaskDTO {
 	@Pattern(regexp = "^(?=\\S).*$", message = "Due date cannot be empty")
 	private String dueAt;
 
-	@Pattern(regexp = "^(?=\\S).*$", message = "Due date cannot be empty")
+	@Pattern(regexp = "^(?=\\S).*$", message = "Category cannot be empty")
 	private String category;
+	
+	@Pattern(regexp = "^(?=\\S).*$", message = "Category cannot be empty")
+	private boolean isCompleted;
 	
 	public String getTitle() {
 		return title;
@@ -45,5 +48,13 @@ public class UpdateTaskDTO {
 	
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	public boolean getIsCompleted() {
+		return this.isCompleted;
+	}
+	
+	public void setIsCompleted(boolean isCompleted) {
+		this.isCompleted = isCompleted;
 	}
 }
