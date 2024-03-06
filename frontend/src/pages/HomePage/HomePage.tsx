@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MainWrapper from '../../containers/MainWrapper/MainWrapper';
 import TaskList from '../../containers/TaskList/TaskList';
 import { getAllTasks } from '../../services/task-services';
+import { RefreshContext } from '../../context/RefreshContextProvider';
 
 const HomePage = () => {
   const [allTasks, setAllTasks] = useState(null);
-  const [refresh, setRefresh] = useState(0);
+  const { refresh } = useContext(RefreshContext);
 
   useEffect(() => {
     getAllTasks()
@@ -13,13 +14,7 @@ const HomePage = () => {
       .catch((e) => console.warn(e.message));
   }, [refresh]);
 
-  return (
-    <MainWrapper>
-      {allTasks && (
-        <TaskList tasks={allTasks} refresh={refresh} setRefresh={setRefresh} />
-      )}
-    </MainWrapper>
-  );
+  return <MainWrapper>{allTasks && <TaskList tasks={allTasks} />}</MainWrapper>;
 };
 
 export default HomePage;
