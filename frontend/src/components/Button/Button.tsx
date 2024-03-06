@@ -8,9 +8,10 @@ interface Icon {
 interface ButtonProps {
   label?: Nullable<string>;
   icon?: Nullable<Icon>;
+  handleClick: () => void;
 }
 
-const Button = ({ label = null, icon = null }: ButtonProps) => {
+const Button = ({ label = null, icon = null, handleClick }: ButtonProps) => {
   const buttonStyles = `
     p-1.5 
     rounded-full 
@@ -27,7 +28,7 @@ const Button = ({ label = null, icon = null }: ButtonProps) => {
   `;
 
   return (
-    <button className={buttonStyles}>
+    <button className={buttonStyles} onClick={handleClick}>
       {label && label}
       {icon && <img className={iconStyles} src={icon.path} alt={icon.alt} />}
     </button>
