@@ -4,7 +4,6 @@ import { deleteTaskById } from '../../services/task-services';
 
 const TaskItem = ({
   task,
-
   refresh,
   setRefresh,
 }: {
@@ -30,7 +29,7 @@ const TaskItem = ({
 
   const taskItemStyles = `
     flex 
-    justify-between 
+    gap-8 
     h-11 
     w-full 
   `;
@@ -43,11 +42,25 @@ const TaskItem = ({
     h-full 
   `;
 
+  const formatDate = (date: Date): string => {
+    const formattedDate = new Date(date);
+    const options: object = {
+      dateStyle: 'short',
+    };
+
+    return formattedDate.toLocaleString('en-US', options);
+  };
+
+  console.log(formatDate(task.dueAt));
+
   return (
     <div className={taskItemStyles}>
-      <div className="flex items-center gap-4">
-        <Checkbox handleChange={handleChange} />
-        <p className={checked ? taskCompletedStyles : ''}>{task.title}</p>
+      <div className="flex grow items-center justify-between">
+        <div className="flex items-center gap-4">
+          <Checkbox handleChange={handleChange} />
+          <p className={checked ? taskCompletedStyles : ''}>{task.title}</p>
+        </div>
+        <p>{formatDate(task.dueAt)}</p>
       </div>
       <button className={deleteBtnStyles} onClick={handleDelete}>
         <img
