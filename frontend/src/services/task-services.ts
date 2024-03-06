@@ -1,3 +1,15 @@
+export const createTask = async (task: Task) => {
+  const response = await fetch('http://localhost:8080/tasks', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(task),
+  });
+  const data = await response.json();
+  return data;
+};
+
 export const getAllTasks = async () => {
   const response = await fetch('http://localhost:8080/tasks');
   const tasks = await response.json();
@@ -10,16 +22,17 @@ export const getTaskById = async (id: number) => {
   return task;
 };
 
-export const createTask = async (task: Task) => {
-  const response = await fetch('http://localhost:8080/tasks', {
+export const updateTaskById = async (id: number, data: object) => {
+  const response = await fetch(`http://localhost:8080/tasks/${id}`, {
     headers: {
       'Content-Type': 'application/json',
     },
-    method: 'POST',
-    body: JSON.stringify(task),
+    method: 'PATCH',
+    body: JSON.stringify(data),
   });
-  const data = await response.json();
-  return data;
+
+  const updatedTask = await response.json();
+  return updatedTask;
 };
 
 export const deleteTaskById = async (id: number) => {
