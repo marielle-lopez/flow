@@ -4,7 +4,7 @@ import TaskList from '../../containers/TaskList/TaskList';
 import { getAllTasks } from '../../services/task-services';
 
 const HomePage = () => {
-  const [allTasks, setAllTasks] = useState([]);
+  const [allTasks, setAllTasks] = useState(null);
   const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
@@ -15,7 +15,9 @@ const HomePage = () => {
 
   return (
     <MainWrapper>
-      <TaskList tasks={allTasks} refresh={refresh} setRefresh={setRefresh} />
+      {allTasks && (
+        <TaskList tasks={allTasks} refresh={refresh} setRefresh={setRefresh} />
+      )}
     </MainWrapper>
   );
 };
