@@ -19,6 +19,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - Displayed the due date of a task
 - Added `isCompleted` property to tasks in the backend to track a task's completion status
 - Created `RefreshContext` to prevent the bad habit of prop drilling, which is used to re-render the `TaskList` component whenever a tasks-related change occurs
+- Set default date of date input in `TaskForm` component to current day's date using `currentDate` function
 
 ### 5 March 2024
 
@@ -93,3 +94,4 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - [How to create a date object representing yesterday's date in single line](https://stackoverflow.com/questions/73770027/how-to-create-date-object-and-set-date-in-1-line-in-typescript)
 - [Text colour gradient with Tailwind CSS](https://daily-dev-tips.com/posts/making-gradient-text-with-tailwind-css/)
 - [How to declare a type as nullable in TypeScript](https://stackoverflow.com/questions/17220114/how-to-declare-a-type-as-nullable-in-typescript)
+- [Remove time after converting date `toISOString`](https://stackoverflow.com/questions/47066555/remove-time-after-converting-date-toisostring)
