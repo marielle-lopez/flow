@@ -10,14 +10,7 @@ export const getTaskById = async (id: number) => {
   return task;
 };
 
-export const createTask = async () => {
-  const task = {
-    title: 'Frontend task',
-    description: 'Hello from the frontend!',
-    dueAt: '1999-12-22',
-    category: 'Test',
-  };
-
+export const createTask = async (task: Task) => {
   const response = await fetch('http://localhost:8080/tasks', {
     headers: {
       'Content-Type': 'application/json',
