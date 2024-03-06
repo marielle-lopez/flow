@@ -15,8 +15,8 @@ public class UpdateTaskDTO {
 	@Pattern(regexp = "^(?=\\S).*$", message = "Category cannot be empty")
 	private String category;
 	
-	@Pattern(regexp = "^(?=\\S).*$", message = "Category cannot be empty")
-	private boolean isCompleted;
+	@Pattern(regexp = "^(true|false)$", message = "isCompleted cannot be empty or be of non-Boolean type")
+	private String isCompleted;
 	
 	public String getTitle() {
 		return title;
@@ -50,11 +50,11 @@ public class UpdateTaskDTO {
 		this.category = category;
 	}
 	
-	public boolean getIsCompleted() {
+	public String getIsCompleted() {
 		return this.isCompleted;
 	}
 	
-	public void setIsCompleted(boolean isCompleted) {
+	public void setIsCompleted(String isCompleted) {
 		this.isCompleted = isCompleted;
 	}
 }
