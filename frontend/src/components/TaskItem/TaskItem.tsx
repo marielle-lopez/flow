@@ -45,8 +45,6 @@ const TaskItem = ({ task }: { task: Task }) => {
     return formattedDate.toLocaleString('en-GB', options);
   };
 
-  console.log(formatDate(task.dueAt));
-
   return (
     <div className={taskItemStyles}>
       <div className="flex grow items-center justify-between">
