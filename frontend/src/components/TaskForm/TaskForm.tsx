@@ -43,6 +43,12 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
     formState: { errors, isSubmitSuccessful },
   } = useForm({ resolver: zodResolver(schema) });
 
+  const currentDate = (): string => {
+    const today: Date = new Date();
+
+    return today.toISOString().split('T', 1)[0];
+  };
+
   useEffect(() => {
     reset();
     setRefresh((refresh) => refresh + 1);
@@ -80,7 +86,7 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
             className={inputStyles + ' border-l border-r'}
             type="date"
             id="dueAt"
-            placeholder="dd/mm/yyyy"
+            value={currentDate()}
             {...register('dueAt')}
           />
           {errors.dueAt?.message && <p>{errors.dueAt.message}</p>}
