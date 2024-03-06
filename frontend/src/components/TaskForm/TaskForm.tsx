@@ -48,10 +48,6 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
     setRefresh((refresh) => refresh + 1);
   }, [isSubmitSuccessful]);
 
-  const handleClick = () => {
-    console.log('Button clicked!');
-  };
-
   return (
     <form className={formStyles} onSubmit={handleSubmit(taskFormSubmit)}>
       <div className={inputWrapperStyles}>
@@ -106,7 +102,6 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
 
       <Button
         icon={{ path: './src/assets/icons/plus.png', alt: 'Plus icon' }}
-        handleClick={handleClick}
       />
     </form>
   );
