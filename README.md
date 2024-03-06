@@ -18,6 +18,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 
 - Displayed the due date of a task
 - Added `isCompleted` property to tasks in the backend to track a task's completion status
+- Created `RefreshContext` to prevent the bad habit of prop drilling, which is used to re-render the `TaskList` component whenever a tasks-related change occurs
 
 ### 5 March 2024
 
