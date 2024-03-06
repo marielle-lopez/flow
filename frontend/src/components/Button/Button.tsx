@@ -8,7 +8,7 @@ interface Icon {
 interface ButtonProps {
   label?: Nullable<string>;
   icon?: Nullable<Icon>;
-  handleClick: () => void;
+  handleClick?: () => void;
 }
 
 const Button = ({ label = null, icon = null, handleClick }: ButtonProps) => {
