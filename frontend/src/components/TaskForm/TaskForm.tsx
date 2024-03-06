@@ -27,6 +27,12 @@ const inputStyles = `
 const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
   const { refresh, setRefresh } = useContext(RefreshContext);
 
+  const currentDate = (): string => {
+    const today: Date = new Date();
+
+    return today.toISOString().split('T', 1)[0];
+  };
+
   const schema = z.object({
     title: z.string().min(1, { message: 'Title required ' }),
     // description: z.string(),
@@ -41,13 +47,12 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitSuccessful },
-  } = useForm({ resolver: zodResolver(schema) });
-
-  const currentDate = (): string => {
-    const today: Date = new Date();
-
-    return today.toISOString().split('T', 1)[0];
-  };
+  } = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      dueAt: currentDate(),
+    },
+  });
 
   useEffect(() => {
     reset();
@@ -86,7 +91,6 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
             className={inputStyles + ' border-l border-r'}
             type="date"
             id="dueAt"
-            value={currentDate()}
             {...register('dueAt')}
           />
           {errors.dueAt?.message && <p>{errors.dueAt.message}</p>}
