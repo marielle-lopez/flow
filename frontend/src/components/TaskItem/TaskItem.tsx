@@ -1,17 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import { deleteTaskById } from '../../services/task-services';
+import { RefreshContext } from '../../context/RefreshContextProvider';
 
-const TaskItem = ({
-  task,
-  refresh,
-  setRefresh,
-}: {
-  task: Task;
-  refresh: number;
-  setRefresh: (refresh: number) => void;
-}) => {
+const TaskItem = ({ task }: { task: Task }) => {
   const [checked, setChecked] = useState(false);
+  const { refresh, setRefresh } = useContext(RefreshContext);
 
   const handleChange = () => {
     setChecked(!checked);
@@ -23,7 +17,7 @@ const TaskItem = ({
     console.log('Delete button clicked!');
     deleteTaskById(task.id).then(() => {
       console.log(`Task '${task.title}' with ID ${task.id} deleted.`);
-      return setRefresh((refresh += 1));
+      return setRefresh((refresh) => refresh + 1);
     });
   };
 
