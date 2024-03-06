@@ -33,6 +33,7 @@ public class TaskService {
 		Task newTask = modelMapper.map(data, Task.class);
 		Date createdAt = new Date();
 		newTask.setCreatedAt(createdAt);
+		newTask.setIsCompleted(false);
 		
 		return this.taskRepository.save(newTask);
 	}
