@@ -31,6 +31,9 @@ public class Task {
 	@Column
 	private String category;
 	
+	@Column
+	private boolean isCompleted;
+	
 	public Task() {
 		super();
 	}
@@ -77,5 +80,13 @@ public class Task {
 	
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	public boolean getIsCompleted() {
+		return this.isCompleted;
+	}
+	
+	public void setIsCompleted(boolean isCompleted) {
+		this.isCompleted = isCompleted;
 	}
 }
