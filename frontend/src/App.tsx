@@ -6,20 +6,23 @@ import TodayPage from './pages/TodayPage/TodayPage.tsx';
 import InboxPage from './pages/InboxPage/InboxPage.tsx';
 import PersonalPage from './pages/PersonalPage/PersonalPage.tsx';
 import WorkPage from './pages/WorkPage/WorkPage.tsx';
+import RefreshContextProvider from './context/RefreshContextProvider.tsx';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/today" element={<TodayPage />} />
-          <Route path="/inbox" element={<InboxPage />} />
-          <Route path="/personal" element={<PersonalPage />} />
-          <Route path="/work" element={<WorkPage />} />
-        </Routes>
-      </BrowserRouter>
+      <RefreshContextProvider>
+        <BrowserRouter>
+          <Sidebar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/today" element={<TodayPage />} />
+            <Route path="/inbox" element={<InboxPage />} />
+            <Route path="/personal" element={<PersonalPage />} />
+            <Route path="/work" element={<WorkPage />} />
+          </Routes>
+        </BrowserRouter>
+      </RefreshContextProvider>
     </>
   );
 }
