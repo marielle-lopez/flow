@@ -1,10 +1,21 @@
-const Checkbox = ({ handleChange }: { handleChange: () => void }) => {
+const Checkbox = ({
+  handleChange,
+  isChecked,
+}: {
+  handleChange: () => void;
+  isChecked: boolean;
+}) => {
   const checkboxStyles = `
     rounded-full 
   `;
 
   return (
-    <input className={checkboxStyles} type="checkbox" onChange={handleChange} />
+    <input
+      className={checkboxStyles}
+      type="checkbox"
+      onChange={handleChange}
+      defaultChecked={isChecked}
+    />
   );
 };
 
