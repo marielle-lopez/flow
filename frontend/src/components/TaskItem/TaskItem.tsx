@@ -46,7 +46,7 @@ const TaskItem = ({ task }: { task: Task }) => {
   };
 
   return (
-    <div className={taskItemStyles}>
+    <div className={taskItemStyles + `${task.isCompleted && 'opacity-25'}`}>
       <div className="flex grow items-center justify-between">
         <div className="flex items-center gap-4">
           <Checkbox handleChange={handleChange} isChecked={task.isCompleted} />
