@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Button from '../Button/Button';
+import { RefreshContext } from '../../context/RefreshContextProvider';
 
 const formStyles = `
   flex 
@@ -24,6 +25,8 @@ const inputStyles = `
 `;
 
 const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
+  const { refresh, setRefresh } = useContext(RefreshContext);
+
   const schema = z.object({
     title: z.string().min(1, { message: 'Title required ' }),
     // description: z.string(),
@@ -42,6 +45,7 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
 
   useEffect(() => {
     reset();
+    setRefresh((refresh) => refresh + 1);
   }, [isSubmitSuccessful]);
 
   const handleClick = () => {
