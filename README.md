@@ -20,6 +20,9 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - Added `isCompleted` property to tasks in the backend to track a task's completion status
 - Created `RefreshContext` to prevent the bad habit of prop drilling, which is used to re-render the `TaskList` component whenever a tasks-related change occurs
 - Set default date of date input in `TaskForm` component to current day's date using `currentDate` function
+- Allowed a task's completion status to be changed on the frontend (i.e., ticked off or unticked) and have such change reflected in the backend (`isCompleted` property of a task is updated accordingly)
+  - Ran into a funny issue with validating boolean values on the backend, which is explained in this [Medium post](https://nieldw.medium.com/the-problem-with-doing-bean-validation-on-a-java-boolean-52988ec2e0e5)
+  - Appropriate styling is also applied to completed tasks and checkbox inputs now have `defaultChecked` attribute to ensure they are ticked if a task's `isCompleted` value is `true`
 
 ### 5 March 2024
 
@@ -95,3 +98,4 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - [Text colour gradient with Tailwind CSS](https://daily-dev-tips.com/posts/making-gradient-text-with-tailwind-css/)
 - [How to declare a type as nullable in TypeScript](https://stackoverflow.com/questions/17220114/how-to-declare-a-type-as-nullable-in-typescript)
 - [Remove time after converting date `toISOString`](https://stackoverflow.com/questions/47066555/remove-time-after-converting-date-toisostring)
+- [The problem with doing bean validation on a Java Boolean](https://nieldw.medium.com/the-problem-with-doing-bean-validation-on-a-java-boolean-52988ec2e0e5)
