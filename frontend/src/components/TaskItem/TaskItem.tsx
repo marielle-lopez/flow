@@ -1,16 +1,16 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Checkbox from '../Checkbox/Checkbox';
-import { deleteTaskById } from '../../services/task-services';
+import { deleteTaskById, updateTaskById } from '../../services/task-services';
 import { RefreshContext } from '../../context/RefreshContextProvider';
 
 const TaskItem = ({ task }: { task: Task }) => {
-  const [checked, setChecked] = useState(false);
   const { refresh, setRefresh } = useContext(RefreshContext);
 
   const handleChange = () => {
-    setChecked(!checked);
-
-    // TODO: update task's 'completed' property
+    updateTaskById(task.id, { isCompleted: !task.isCompleted }).then((res) => {
+      console.log(`Task completion status changed: `, res);
+      return setRefresh((refresh) => refresh + 1);
+    });
   };
 
   const handleDelete = () => {
@@ -49,8 +49,10 @@ const TaskItem = ({ task }: { task: Task }) => {
     <div className={taskItemStyles}>
       <div className="flex grow items-center justify-between">
         <div className="flex items-center gap-4">
-          <Checkbox handleChange={handleChange} />
-          <p className={checked ? taskCompletedStyles : ''}>{task.title}</p>
+          <Checkbox handleChange={handleChange} isChecked={task.isCompleted} />
+          <p className={task.isCompleted ? taskCompletedStyles : ''}>
+            {task.title}
+          </p>
         </div>
         <p>{formatDate(task.dueAt)}</p>
       </div>
