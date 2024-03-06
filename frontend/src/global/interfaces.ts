@@ -5,4 +5,5 @@ interface Task {
   createdAt: Date;
   dueAt: Date;
   category: string;
+  isCompleted: boolean;
 }
