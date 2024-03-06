@@ -27,7 +27,7 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
   const schema = z.object({
     title: z.string().min(1, { message: 'Title required ' }),
     // description: z.string(),
-    dueDate: z.coerce.date().min(new Date(Date.now() - 864e5), {
+    dueAt: z.coerce.date().min(new Date(Date.now() - 864e5), {
       message: 'Due date cannot be past',
     }),
     category: z.string().min(1, { message: 'Category required ' }),
@@ -43,6 +43,10 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
   useEffect(() => {
     reset();
   }, [isSubmitSuccessful]);
+
+  const handleClick = () => {
+    console.log('Button clicked!');
+  };
 
   return (
     <form className={formStyles} onSubmit={handleSubmit(taskFormSubmit)}>
@@ -75,11 +79,11 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
           <input
             className={inputStyles + ' border-l border-r'}
             type="date"
-            id="dueDate"
+            id="dueAt"
             placeholder="dd/mm/yyyy"
-            {...register('dueDate')}
+            {...register('dueAt')}
           />
-          {errors.dueDate?.message && <p>{errors.dueDate.message}</p>}
+          {errors.dueAt?.message && <p>{errors.dueAt.message}</p>}
         </div>
 
         <div>
@@ -98,6 +102,7 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
 
       <Button
         icon={{ path: './src/assets/icons/plus.png', alt: 'Plus icon' }}
+        handleClick={handleClick}
       />
     </form>
   );
