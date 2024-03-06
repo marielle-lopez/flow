@@ -16,6 +16,9 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 
 ### 6 March 2024
 
+- Displayed the due date of a task
+- Added `isCompleted` property to tasks in the backend to track a task's completion status
+
 ### 5 March 2024
 
 - Retrieved relevant data from the backend in a specific page component (e.g., all tasks would be fetched and displayed on the homepage)
