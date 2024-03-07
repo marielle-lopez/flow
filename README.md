@@ -8,9 +8,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 
 ## To-Do
 
-- Error handling in `task-services.tsx` and form validation
-- Isolate sensitive information specified in backend files
-- Find a way to use Tailwind CSS in a CSS file
+Check out my [project board](https://github.com/users/marielle-lopez/projects/4/views/1) to see what's on the to-do list, what I'm currently working on, what I've done so far, and any bugs and issues I've come across; all in a condensed view.
 
 ## Task Completion History
 
