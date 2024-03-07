@@ -7,21 +7,26 @@ import InboxPage from './pages/InboxPage/InboxPage.tsx';
 import PersonalPage from './pages/PersonalPage/PersonalPage.tsx';
 import WorkPage from './pages/WorkPage/WorkPage.tsx';
 import RefreshContextProvider from './context/RefreshContextProvider.tsx';
+import TaskModal from './components/TaskModal/TaskModal.tsx';
+import ModalContextProvider from './context/ModalContextProvider.tsx';
 
 function App() {
   return (
     <>
       <RefreshContextProvider>
-        <BrowserRouter>
-          <Sidebar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/today" element={<TodayPage />} />
-            <Route path="/inbox" element={<InboxPage />} />
-            <Route path="/personal" element={<PersonalPage />} />
-            <Route path="/work" element={<WorkPage />} />
-          </Routes>
-        </BrowserRouter>
+        <ModalContextProvider>
+          <BrowserRouter>
+            <Sidebar />
+            <TaskModal />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/today" element={<TodayPage />} />
+              <Route path="/inbox" element={<InboxPage />} />
+              <Route path="/personal" element={<PersonalPage />} />
+              <Route path="/work" element={<WorkPage />} />
+            </Routes>
+          </BrowserRouter>
+        </ModalContextProvider>
       </RefreshContextProvider>
     </>
   );
