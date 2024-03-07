@@ -6,7 +6,8 @@ import { ModalContext } from '../../context/ModalContextProvider';
 
 const TaskItem = ({ task }: { task: Task }) => {
   const { refresh, setRefresh } = useContext(RefreshContext);
-  const { isHidden, setIsHidden } = useContext(ModalContext);
+  const { modalIsHidden, setModalIsHidden, modalTask, setModalTask } =
+    useContext(ModalContext);
 
   const handleChange = () => {
     updateTaskById(task.id, { isCompleted: !task.isCompleted }).then((res) => {
@@ -58,7 +59,12 @@ const TaskItem = ({ task }: { task: Task }) => {
         </div>
         <p>{formatDate(task.dueAt)}</p>
       </div>
-      <button onClick={() => setIsHidden(false)}>
+      <button
+        onClick={() => {
+          setModalIsHidden(false);
+          setModalTask(task);
+        }}
+      >
         <img
           className="h-1/2"
           src="./src/assets/icons/pencil.png"
