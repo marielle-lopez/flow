@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import { deleteTaskById, updateTaskById } from '../../services/task-services';
 import { RefreshContext } from '../../context/RefreshContextProvider';
+import { ModalContext } from '../../context/ModalContextProvider';
 
 const TaskItem = ({ task }: { task: Task }) => {
   const { refresh, setRefresh } = useContext(RefreshContext);
+  const { isHidden, setIsHidden } = useContext(ModalContext);
 
   const handleChange = () => {
     updateTaskById(task.id, { isCompleted: !task.isCompleted }).then((res) => {
@@ -56,6 +58,13 @@ const TaskItem = ({ task }: { task: Task }) => {
         </div>
         <p>{formatDate(task.dueAt)}</p>
       </div>
+      <button onClick={() => setIsHidden(false)}>
+        <img
+          className="h-1/2"
+          src="./src/assets/icons/pencil.png"
+          alt="Pencil icon"
+        />
+      </button>
       <button className={deleteBtnStyles} onClick={handleDelete}>
         <img
           className="h-1/2"
