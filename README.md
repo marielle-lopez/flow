@@ -15,8 +15,9 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 ### 7 March 2024
 
 - Constructed `TaskModal` component which will appear when a user clicks the pencil icon ('edit' button) of a task item
-- Created `ModalContextProvider` which holds the state `isHidden`, which is used for conditional rendering (if it is `false`, the modal will not be displayed, and vice versa) in the `TaskModal` component
+- Created `ModalContextProvider` which holds the state `modalIsHidden`, which is used for conditional rendering (if it is `false`, the modal will not be displayed, and vice versa) in the `TaskModal` component
   - This was decided to prevent the problem of prop-drilling
+  - Also has `modalTask` state which stores the task the modal should display information of
 
 ### 6 March 2024
 
