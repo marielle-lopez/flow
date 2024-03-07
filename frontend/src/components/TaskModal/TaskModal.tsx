@@ -2,7 +2,8 @@ import { useContext } from 'react';
 import { ModalContext } from '../../context/ModalContextProvider';
 
 const TaskModal = () => {
-  const { isHidden, setIsHidden } = useContext(ModalContext);
+  const { modalIsHidden, setModalIsHidden, modalTask, setModalTask } =
+    useContext(ModalContext);
 
   const overlayStyles = `
     w-full 
@@ -20,18 +21,17 @@ const TaskModal = () => {
     bg-shark 
   `;
 
-  console.log(isHidden);
-
   return (
     <>
-      <div className={overlayStyles + `${isHidden && 'hidden'}`}></div>
-      <div className={modalStyles + `${isHidden && 'hidden'}`}>
+      <div className={overlayStyles + `${modalIsHidden && 'hidden'}`}></div>
+      <div className={modalStyles + `${modalIsHidden && 'hidden'}`}>
         <h3>Edit task</h3>
-        <p>Task title here</p>
-        <p>Date here</p>
+        <p>{modalTask ? modalTask.title : 'Task title is unknown'}</p>
+        <p>{modalTask ? modalTask.dueAt : 'Task due date is unknown'}</p>
         <button
           onClick={() => {
-            setIsHidden(true);
+            setModalIsHidden(true);
+            setModalTask(null);
           }}
         >
           Close modal
