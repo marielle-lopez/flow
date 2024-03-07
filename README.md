@@ -14,11 +14,17 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 
 ## Task Completion History
 
+### 7 March 2024
+
+- Constructed `TaskModal` component which will appear when a user clicks the pencil icon ('edit' button) of a task item
+- Created `ModalContextProvider` which holds the state `isHidden`, which is used for conditional rendering (if it is `false`, the modal will not be displayed, and vice versa) in the `TaskModal` component
+  - This was decided to prevent the problem of prop-drilling
+
 ### 6 March 2024
 
 - Displayed the due date of a task
 - Added `isCompleted` property to tasks in the backend to track a task's completion status
-- Created `RefreshContext` to prevent the bad habit of prop drilling, which is used to re-render the `TaskList` component whenever a tasks-related change occurs
+- Created `RefreshContext` to prevent the bad habit of prop-drilling, which is used to re-render the `TaskList` component whenever a tasks-related change occurs
 - Set default date of date input in `TaskForm` component to current day's date using `currentDate` function
 - Allowed a task's completion status to be changed on the frontend (i.e., ticked off or unticked) and have such change reflected in the backend (`isCompleted` property of a task is updated accordingly)
   - Ran into a funny issue with validating boolean values on the backend, which is explained in this [Medium post](https://nieldw.medium.com/the-problem-with-doing-bean-validation-on-a-java-boolean-52988ec2e0e5)
@@ -29,7 +35,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - Retrieved relevant data from the backend in a specific page component (e.g., all tasks would be fetched and displayed on the homepage)
 - Created `TaskItem` and `Checkbox` component which go hand-in-hand, functional in the way that when a user clicks the checkbox the task is 'crossed off'
 - Enabled users to delete tasks
-  - The only qualm I have with my current implementation is the case of prop drilling, where I have a piece of state `refresh` and its setter being passed from the page component, to `TaskList`, then `TaskItem`
+  - The only qualm I have with my current implementation is the case of prop-drilling, where I have a piece of state `refresh` and its setter being passed from the page component, to `TaskList`, then `TaskItem`
 - Enabled users to create tasks
   - Ran into a small issue where a task wouldn't be added to the database; the problem was on the frontend the due date was called `dueDate`, where as in the backend, it is referred to `dueAt`
 
@@ -89,6 +95,7 @@ Flow is more than just a task manager; it's a streamlined experience designed to
 - [Work](https://img.icons8.com/fluency-systems-regular/96/business--v1.png)
 - [Plus](https://img.icons8.com/fluency-systems-regular/96/000000/plus-math--v1.png)
 - [Cross](https://img.icons8.com/fluency-systems-filled/48/multiply.png)
+- [Pencil](https://img.icons8.com/windows/32/000000/edit--v1.png)
 
 ### Bits and Bobs
 
