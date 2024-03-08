@@ -1,6 +1,8 @@
 package io.nology.flow.tasks;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class CreateTaskDTO {
 	@NotBlank
@@ -8,10 +10,12 @@ public class CreateTaskDTO {
 	
 	private String description;
 	
+	@NotBlank
 	private String dueAt;
 	
-	@NotBlank
-	private String category;
+	@NotNull
+	@Min(1)
+	private Long categoryId;
 	
 	public String getTitle() {
 		return this.title;
@@ -25,7 +29,11 @@ public class CreateTaskDTO {
 		return this.dueAt;
 	}
 	
-	public String getCategory() {
-		return this.category;
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
 	}
 }
