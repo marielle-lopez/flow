@@ -3,6 +3,7 @@ import Checkbox from '../Checkbox/Checkbox';
 import { deleteTaskById, updateTaskById } from '../../services/task-services';
 import { RefreshContext } from '../../context/RefreshContextProvider';
 import { ModalContext } from '../../context/ModalContextProvider';
+import { formatDate } from '../../global/helpers';
 
 const TaskItem = ({ task }: { task: Task }) => {
   const { refresh, setRefresh } = useContext(RefreshContext);
@@ -38,15 +39,6 @@ const TaskItem = ({ task }: { task: Task }) => {
   const deleteBtnStyles = `
     h-full 
   `;
-
-  const formatDate = (date: Date): string => {
-    const formattedDate = new Date(date);
-    const options: object = {
-      dateStyle: 'short',
-    };
-
-    return formattedDate.toLocaleString('en-GB', options);
-  };
 
   return (
     <div className={taskItemStyles + `${task.isCompleted && 'opacity-25'}`}>
