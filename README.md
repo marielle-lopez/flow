@@ -17,6 +17,8 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - Restyled `TaskModal` component to improve UI design
 - Used React Hook Form in `TaskModal` to allow user to edit a task's information
   - Ran into an issue where default values were not appearing in their corresponding outputs; [this Stack Overflow post](https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect/62243132#62243132) explains that in addition to defining `defaultValues` in the `useForm`, I also needed to listen to potential changes to `modalTask`
+- Created `Categories` domain in the backend and created a relationship to the `Tasks` domain
+- Category select input now only has options based on fetched categories from the backend
 
 ### 7 March 2024
 
