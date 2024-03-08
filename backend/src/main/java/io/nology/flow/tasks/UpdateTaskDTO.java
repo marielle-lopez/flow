@@ -1,6 +1,7 @@
 package io.nology.flow.tasks;
 
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 
 public class UpdateTaskDTO {
 	@Pattern(regexp = "^(?=\\S).*$", message = "Title cannot be empty")
@@ -12,8 +13,8 @@ public class UpdateTaskDTO {
 	@Pattern(regexp = "^(?=\\S).*$", message = "Due date cannot be empty")
 	private String dueAt;
 
-	@Pattern(regexp = "^(?=\\S).*$", message = "Category cannot be empty")
-	private String category;
+	@Positive
+	private Long categoryId;
 	
 	@Pattern(regexp = "^(true|false)$", message = "isCompleted cannot be empty or be of non-Boolean type")
 	private String isCompleted;
@@ -42,12 +43,12 @@ public class UpdateTaskDTO {
 		this.dueAt = dueAt;
 	}
 	
-	public String getCategory() {
-		return this.category;
+	public Long getCategoryId() {
+		return this.categoryId;
 	}
 	
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 	public String getIsCompleted() {
