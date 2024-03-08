@@ -6,9 +6,8 @@ import org.modelmapper.spi.MappingContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import io.nology.flow.tasks.CreateTaskDTO;
-import io.nology.flow.tasks.Task;
-import io.nology.flow.tasks.UpdateTaskDTO;
+import io.nology.flow.categories.Category;
+import io.nology.flow.categories.CreateCategoryDTO;
 
 @Configuration
 public class ModelMapperConfig {
@@ -17,12 +16,17 @@ public class ModelMapperConfig {
 		ModelMapper mapper = new ModelMapper();
 		mapper.typeMap(String.class, String.class).setConverter(new TrimConverter());
 		mapper.getConfiguration().setSkipNullEnabled(true);
-		mapper.typeMap(CreateTaskDTO.class, Task.class)
-			.addMappings(m -> m.using(new LowerCaseConverter())
-					.map(CreateTaskDTO::getCategory, Task::setCategory));
-		mapper.typeMap(UpdateTaskDTO.class, Task.class)
-			.addMappings(m -> m.using(new LowerCaseConverter())
-					.map(UpdateTaskDTO::getCategory, Task::setCategory));
+		
+//		mapper.typeMap(CreateTaskDTO.class, Task.class)
+//			.addMappings(m -> m.using(new LowerCaseConverter())
+//					.map(CreateTaskDTO::getCategory, Task::setCategory));
+//		mapper.typeMap(UpdateTaskDTO.class, Task.class)
+//			.addMappings(m -> m.using(new LowerCaseConverter())
+//					.map(UpdateTaskDTO::getCategory, Task::setCategory));
+		
+		mapper.typeMap(CreateCategoryDTO.class, Category.class)
+			.addMappings(m -> m.using(new LowerCaseConverter()).map(CreateCategoryDTO::getName, Category::setName));
+		
 		return mapper;
 	}
 	
