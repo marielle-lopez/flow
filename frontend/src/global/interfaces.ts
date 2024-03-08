@@ -4,6 +4,6 @@ interface Task {
   description: string;
   createdAt: Date;
   dueAt: Date;
-  category: string;
+  categoryId: number;
   isCompleted: boolean;
 }
