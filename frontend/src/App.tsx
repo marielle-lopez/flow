@@ -9,24 +9,27 @@ import WorkPage from './pages/WorkPage/WorkPage.tsx';
 import RefreshContextProvider from './context/RefreshContextProvider.tsx';
 import TaskModal from './components/TaskModal/TaskModal.tsx';
 import ModalContextProvider from './context/ModalContextProvider.tsx';
+import CategoriesContextProvider from './context/CategoriesContextProvider.tsx';
 
 function App() {
   return (
     <>
       <RefreshContextProvider>
-        <ModalContextProvider>
-          <BrowserRouter>
-            <Sidebar />
-            <TaskModal />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/today" element={<TodayPage />} />
-              <Route path="/inbox" element={<InboxPage />} />
-              <Route path="/personal" element={<PersonalPage />} />
-              <Route path="/work" element={<WorkPage />} />
-            </Routes>
-          </BrowserRouter>
-        </ModalContextProvider>
+        <CategoriesContextProvider>
+          <ModalContextProvider>
+            <BrowserRouter>
+              <Sidebar />
+              <TaskModal />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/today" element={<TodayPage />} />
+                <Route path="/inbox" element={<InboxPage />} />
+                <Route path="/personal" element={<PersonalPage />} />
+                <Route path="/work" element={<WorkPage />} />
+              </Routes>
+            </BrowserRouter>
+          </ModalContextProvider>
+        </CategoriesContextProvider>
       </RefreshContextProvider>
     </>
   );
