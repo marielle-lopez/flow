@@ -12,6 +12,12 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 
 ## Task Completion History
 
+### 8 March 2024
+
+- Restyled `TaskModal` component to improve UI design
+- Used React Hook Form in `TaskModal` to allow user to edit a task's information
+  - Ran into an issue where default values were not appearing in their corresponding outputs; [this Stack Overflow post](https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect/62243132#62243132) explains that in addition to defining `defaultValues` in the `useForm`, I also needed to listen to potential changes to `modalTask`
+
 ### 7 March 2024
 
 - Constructed `TaskModal` component which will appear when a user clicks the pencil icon ('edit' button) of a task item
@@ -105,3 +111,4 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - [How to declare a type as nullable in TypeScript](https://stackoverflow.com/questions/17220114/how-to-declare-a-type-as-nullable-in-typescript)
 - [Remove time after converting date `toISOString`](https://stackoverflow.com/questions/47066555/remove-time-after-converting-date-toisostring)
 - [The problem with doing bean validation on a Java Boolean](https://nieldw.medium.com/the-problem-with-doing-bean-validation-on-a-java-boolean-52988ec2e0e5)
+- [How to change React Hook Form `defaultValue` with `useEffect`](https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect/62243132#62243132)
