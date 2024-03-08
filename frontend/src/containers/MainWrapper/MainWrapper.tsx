@@ -3,7 +3,6 @@ import { createTask } from '../../services/task-services';
 
 const MainWrapper = ({ children }) => {
   const taskFormSubmit = (task: Task) => {
-    console.log(task);
     createTask(task).then((res) => console.log(`Created task: ${res}`));
   };
 
