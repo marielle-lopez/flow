@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Button from '../Button/Button';
 import { RefreshContext } from '../../context/RefreshContextProvider';
+import { CategoriesContext } from '../../context/CategoriesContextProvider';
 
 const formStyles = `
   flex 
@@ -26,6 +27,7 @@ const inputStyles = `
 
 const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
   const { refresh, setRefresh } = useContext(RefreshContext);
+  const { categories } = useContext(CategoriesContext);
 
   const currentDate = (): string => {
     const today: Date = new Date();
@@ -39,7 +41,7 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
     dueAt: z.coerce.date().min(new Date(Date.now() - 864e5), {
       message: 'Due date cannot be past',
     }),
-    category: z.string().min(1, { message: 'Category required ' }),
+    categoryId: z.coerce.number().int().gte(1),
   });
 
   const {
@@ -99,14 +101,16 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
         <div>
           <select
             className={inputStyles + ' rounded-tr-full rounded-br-full'}
-            id="category"
-            {...register('category')}
+            id="categoryId"
+            {...register('categoryId')}
           >
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-            <option value="university">University</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
           </select>
-          {errors.category?.message && <p>{errors.category.message}</p>}
+          {errors.categoryId?.message && <p>{errors.categoryId.message}</p>}
         </div>
       </div>
 
