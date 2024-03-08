@@ -6,18 +6,20 @@ import { ModalContext } from '../../context/ModalContextProvider';
 import { formatDate } from '../../global/helpers';
 import { RefreshContext } from '../../context/RefreshContextProvider';
 import { updateTaskById } from '../../services/task-services';
+import { CategoriesContext } from '../../context/CategoriesContextProvider';
 
 const TaskModal = () => {
   const { modalIsHidden, setModalIsHidden, modalTask, setModalTask } =
     useContext(ModalContext);
   const { refresh, setRefresh } = useContext(RefreshContext);
+  const { categories } = useContext(CategoriesContext);
 
   const schema = z.object({
     title: z.string().min(1, { message: 'Title required' }),
     dueAt: z.coerce.date().min(new Date(Date.now() - 864e5), {
       message: 'Due date cannot be past',
     }),
-    category: z.string().min(1, { message: 'Category required' }),
+    categoryId: z.coerce.number().int().gte(1),
   });
 
   const {
@@ -30,7 +32,7 @@ const TaskModal = () => {
     defaultValues: {
       title: modalTask?.title,
       dueAt: modalTask?.dueAt.split('T', 1)[0],
-      category: modalTask?.category,
+      categoryId: modalTask?.categoryId,
     },
   });
 
@@ -110,7 +112,7 @@ const TaskModal = () => {
     reset({
       title: modalTask?.title,
       dueAt: modalTask?.dueAt.split('T', 1)[0],
-      category: modalTask?.category,
+      categoryId: modalTask?.categoryId,
     });
   }, [modalTask]);
 
@@ -167,14 +169,18 @@ const TaskModal = () => {
                 {errors.dueAt?.message && <p>{errors.dueAt.message}</p>}
                 <select
                   className={inputStyles + ` rounded-tr-full rounded-br-full`}
-                  id="category"
-                  {...register('category')}
+                  id="categoryId"
+                  {...register('categoryId')}
                 >
-                  <option value="personal">Personal</option>
-                  <option value="work">Work</option>
-                  <option value="university">University</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
                 </select>
-                {errors.category?.message && <p>{errors.category.message}</p>}
+                {errors.categoryId?.message && (
+                  <p>{errors.categoryId.message}</p>
+                )}
               </div>
               <div className={footerStyles}>
                 <button className="px-4 py-2 rounded-lg text-shark bg-chetwode">
