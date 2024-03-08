@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.nology.flow.exceptions.NotFoundException;
+import io.nology.flow.exceptions.ServiceValidationException;
 import jakarta.validation.Valid;
 
 @RestController
@@ -40,7 +41,7 @@ public class TaskController {
 	}
 	
 	@PostMapping()
-	public ResponseEntity<Task> createTask(@Valid @RequestBody CreateTaskDTO data) throws ParseException {
+	public ResponseEntity<Task> createTask(@Valid @RequestBody CreateTaskDTO data) throws ParseException, ServiceValidationException {
 		Task createdTask = this.taskService.createTask(data);
 		return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
 	}
