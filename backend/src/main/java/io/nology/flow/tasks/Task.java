@@ -2,25 +2,21 @@ package io.nology.flow.tasks;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.nology.flow.categories.Category;
+import io.nology.flow.common.BaseEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
-import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "tasks")
-public class Task {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+public class Task extends BaseEntity {
 	@Column
 	private String title;
-	
-	@Column
-	private Date createdAt;
 	
 	@Column
 	private Date dueAt;
@@ -29,17 +25,15 @@ public class Task {
 	private String description;
 	
 	@Column
-	private String category;
-	
-	@Column
 	private boolean isCompleted;
+	
+	@ManyToOne()
+	@JoinColumn(name = "category_id")
+	@JsonIgnoreProperties("tasks")
+	private Category category;
 	
 	public Task() {
 		super();
-	}
-	
-	public Long getId() {
-		return this.id;
 	}
 	
 	public String getTitle() {
@@ -48,14 +42,6 @@ public class Task {
 	
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	
-	public Date getCreatedAt() {
-		return this.createdAt;
-	}
-	
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
 	}
 	
 	public Date getDueAt() {
@@ -74,19 +60,19 @@ public class Task {
 		this.description = description;
 	}
 	
-	public String getCategory() {
-		return this.category;
-	}
-	
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	
 	public boolean getIsCompleted() {
 		return this.isCompleted;
 	}
 	
 	public void setIsCompleted(boolean isCompleted) {
 		this.isCompleted = isCompleted;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }
