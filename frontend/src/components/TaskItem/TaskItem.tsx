@@ -13,7 +13,7 @@ const TaskItem = ({ task }: { task: Task }) => {
   const handleChange = () => {
     updateTaskById(task.id, { isCompleted: !task.isCompleted }).then((res) => {
       console.log(`Task completion status changed: `, res);
-      return setRefresh((refresh) => refresh + 1);
+      return setRefresh((refresh: number) => refresh + 1);
     });
   };
 
@@ -21,7 +21,7 @@ const TaskItem = ({ task }: { task: Task }) => {
     console.log('Delete button clicked!');
     deleteTaskById(task.id).then(() => {
       console.log(`Task '${task.title}' with ID ${task.id} deleted.`);
-      return setRefresh((refresh) => refresh + 1);
+      return setRefresh((refresh: number) => refresh + 1);
     });
   };
 
