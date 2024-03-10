@@ -57,13 +57,14 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
 
   useEffect(() => {
     reset({
-      dueAt: currentDate(),
       categoryId: categories[0],
     });
   }, [categories]);
 
   useEffect(() => {
-    reset();
+    reset({
+      dueAt: currentDate(),
+    });
   }, [isSubmitSuccessful]);
 
   return (
