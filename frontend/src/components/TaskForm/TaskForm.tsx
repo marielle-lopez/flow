@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Button from '../Button/Button';
-import { RefreshContext } from '../../context/RefreshContextProvider';
 import { CategoriesContext } from '../../context/CategoriesContextProvider';
 
 const formStyles = `
@@ -26,7 +25,6 @@ const inputStyles = `
 `;
 
 const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
-  const { refresh, setRefresh } = useContext(RefreshContext);
   const { categories } = useContext(CategoriesContext);
 
   const currentDate = (): string => {
@@ -59,13 +57,13 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
 
   useEffect(() => {
     reset({
+      dueAt: currentDate(),
       categoryId: categories[0],
     });
   }, [categories]);
 
   useEffect(() => {
     reset();
-    setRefresh((refresh) => refresh + 1);
   }, [isSubmitSuccessful]);
 
   return (
