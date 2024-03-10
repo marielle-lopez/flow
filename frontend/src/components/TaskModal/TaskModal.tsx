@@ -19,7 +19,7 @@ const TaskModal = () => {
     dueAt: z.coerce.date().min(new Date(Date.now() - 864e5), {
       message: 'Due date cannot be past',
     }),
-    categoryId: z.coerce.number().int().gte(1),
+    // categoryId: z.coerce.number().int().gte(1),
   });
 
   const {
@@ -32,7 +32,7 @@ const TaskModal = () => {
     defaultValues: {
       title: modalTask?.title,
       dueAt: modalTask?.dueAt.split('T', 1)[0],
-      categoryId: modalTask?.categoryId,
+      // categoryId: modalTask?.categoryId,
     },
   });
 
@@ -112,7 +112,7 @@ const TaskModal = () => {
     reset({
       title: modalTask?.title,
       dueAt: modalTask?.dueAt.split('T', 1)[0],
-      categoryId: modalTask?.categoryId,
+      // categoryId: modalTask?.categoryId,
     });
   }, [modalTask]);
 
@@ -167,7 +167,7 @@ const TaskModal = () => {
                   {...register('dueAt')}
                 />
                 {errors.dueAt?.message && <p>{errors.dueAt.message}</p>}
-                <select
+                {/* <select
                   className={inputStyles + ` rounded-tr-full rounded-br-full`}
                   id="categoryId"
                   {...register('categoryId')}
@@ -180,7 +180,7 @@ const TaskModal = () => {
                 </select>
                 {errors.categoryId?.message && (
                   <p>{errors.categoryId.message}</p>
-                )}
+                )} */}
               </div>
               <div className={footerStyles}>
                 <button className="px-4 py-2 rounded-lg text-shark bg-chetwode">
