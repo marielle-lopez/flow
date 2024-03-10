@@ -19,6 +19,8 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
   - Ran into an issue where default values were not appearing in their corresponding outputs; [this Stack Overflow post](https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect/62243132#62243132) explains that in addition to defining `defaultValues` in the `useForm`, I also needed to listen to potential changes to `modalTask`
 - Created `Categories` domain in the backend and created a relationship to the `Tasks` domain
 - Category select input now only has options based on fetched categories from the backend
+- Currently experiencing an issue where an existing task's category cannot be updated to a different one
+  - For example, if a user tries to update a task with a category of 'Personal' to 'Work', an error with a status code `500` is given, with the following message: _"identifier of an instance of io.nology.flow.categories.Category was altered from 2 to 3"_
 
 ### 7 March 2024
 
