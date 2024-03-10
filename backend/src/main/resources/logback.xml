@@ -13,7 +13,7 @@
         </encoder>
     </appender>
     
-    <logger name="io.nology.flow.common.RequestCachingFilter" level="INFO" additivity="false">
+    <logger name="io.nology.flow.logging.RequestCachingFilter" level="INFO" additivity="false">
         <appender-ref ref="FILE" />
     </logger>
     
