@@ -2,28 +2,44 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const sidebarWrapperStyles = `
-  flex 
-  flex-col 
-  p-12 
-  w-1/5 
-  bg-charade 
-`;
+    flex 
+    flex-col 
+    gap-8 
+    p-12 
+    w-1/5 
+    bg-charade 
+  `;
+
+  const sidebarListStyles = `
+    flex 
+    flex-col 
+    gap-2 
+  `;
+
+  const sidebarListItemStyles = `
+    flex 
+    gap-2 
+    items-center 
+  `;
 
   const logoStyles = `
-  font-accent
-  text-5xl
-  font-extralight
-`;
+    flex 
+    gap-0.5 
+    items-end 
+    font-accent
+    text-5xl
+    font-extralight
+  `;
 
   const logoWStyles = `
-  font-normal
-  text-transparent
-  bg-clip-text
-  bg-gradient-to-r
-  from-hopbush
-  via-chetwode
-  to-aquamarine
-`;
+    font-normal
+    text-transparent
+    bg-clip-text
+    bg-gradient-to-r
+    from-hopbush
+    via-chetwode
+    to-aquamarine
+  `;
 
   const iconStyles = `
     inline 
@@ -32,13 +48,20 @@ const Sidebar = () => {
 
   return (
     <div className={sidebarWrapperStyles}>
+      {/* FIXME: accent 'w' should not use an img */}
       <h1 className={logoStyles}>
-        flo<span className={logoWStyles}>w</span>
+        {/* flo<span className={logoWStyles}>w</span> */}
+        flo
+        <img
+          className="w-11 mb-1.5"
+          src="./src/assets/icons/logo-thumbnail.png"
+          alt="Flow thumbnail logo"
+        />
       </h1>
 
-      <ul>
+      <ul className={sidebarListStyles}>
         <li>
-          <Link to="/">
+          <Link className={sidebarListItemStyles} to="/">
             <img
               className={iconStyles}
               src="../src/assets/icons/all.png"
@@ -48,7 +71,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/today">
+          <Link className={sidebarListItemStyles} to="/today">
             <img
               className={iconStyles}
               src="../src/assets/icons/today.png"
@@ -58,7 +81,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/inbox">
+          <Link className={sidebarListItemStyles} to="/inbox">
             <img
               className={iconStyles}
               src="../src/assets/icons/inbox.png"
@@ -68,7 +91,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/personal">
+          <Link className={sidebarListItemStyles} to="/personal">
             <img
               className={iconStyles}
               src="../src/assets/icons/personal.png"
@@ -78,7 +101,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/work">
+          <Link className={sidebarListItemStyles} to="/work">
             <img
               className={iconStyles}
               src="../src/assets/icons/work.png"
