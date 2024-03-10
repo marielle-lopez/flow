@@ -1,4 +1,4 @@
-package io.nology.flow.common;
+package io.nology.flow.logging;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
