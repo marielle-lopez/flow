@@ -50,6 +50,7 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
+      title: '',
       dueAt: currentDate(),
       categoryId: categories[0],
     },
@@ -57,13 +58,16 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
 
   useEffect(() => {
     reset({
+      // dueAt: currentDate(),
       categoryId: categories[0],
     });
   }, [categories]);
 
   useEffect(() => {
     reset({
+      title: '',
       dueAt: currentDate(),
+      categoryId: categories[0],
     });
   }, [isSubmitSuccessful]);
 
