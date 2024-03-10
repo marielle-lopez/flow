@@ -18,21 +18,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.nology.flow.exceptions.NotFoundException;
 import io.nology.flow.exceptions.ServiceValidationException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/tasks")
+@Tag(name = "Tasks")
 public class TaskController {
 	@Autowired
 	private TaskService taskService;
 	
 	@GetMapping
+	@Operation(summary = "Gets all tasks")
 	public ResponseEntity<List<Task>> getAllTasks() {
 		List<Task> allTasks = this.taskService.getAllTasks();
 		return new ResponseEntity<>(allTasks, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
+	@Operation(summary = "Gets a task by ID")
 	public ResponseEntity<Task> getTaskById(@PathVariable Long id) throws NotFoundException {
 		Optional<Task> maybeTask = this.taskService.getTaskById(id);
 		Task foundTask = maybeTask.orElseThrow(() -> new NotFoundException(Task.class, id));
@@ -41,19 +46,23 @@ public class TaskController {
 	}
 	
 	@PostMapping()
+	@Operation(summary = "Creates a task")
 	public ResponseEntity<Task> createTask(@Valid @RequestBody CreateTaskDTO data) throws ParseException, ServiceValidationException {
 		Task createdTask = this.taskService.createTask(data);
 		return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
 	}
 	
 	@PatchMapping("/{id}")
+	@Operation(summary = "Updates a task via ID")
 	public ResponseEntity<Task> updateTaskById(@PathVariable Long id, @Valid @RequestBody UpdateTaskDTO data) throws NotFoundException, ParseException {
+		System.out.println(data);
 		Optional<Task> maybeUpdatedTask = this.taskService.updateById(id, data);
 		Task updatedTask = maybeUpdatedTask.orElseThrow(() -> new NotFoundException(Task.class, id));
 		return new ResponseEntity<>(updatedTask, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
+	@Operation(summary = "Deletes a task by ID")
 	public ResponseEntity<Task> deleteTaskById(@PathVariable Long id) throws NotFoundException {
 		boolean deleted = this.taskService.deletePostById(id);
 		
