@@ -17,6 +17,10 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - Integrated OpenAPI 3 and Swagger UI with backend to document REST API using the help of [this YouTube video](https://www.youtube.com/watch?v=2o_3hjUPAfQ)
 - Enabled logging of incoming HTTP requests using Spring Boot's logging filter
   - Implemented this feature by following [this Baeldung guide](https://www.baeldung.com/spring-http-logging)
+- Fixed a couple of bugs:
+  - On page load, when a user successfully creates a task, the tasks list would not refresh, and additionally, the default due date in the `TaskForm` component would not display the current date
+    - The refresh bug fixed by moving the update of the `refresh` state to the inside of the `.then()` states which are called on corresponding methods for API calling (e.g., `createTask()`)
+    - The due date bug was fixed by adding the `dueAt` property inside of the `reset()` being called in the `useEffect` watching `isSubmitSuccessful`
 
 ### 8 March 2024
 
