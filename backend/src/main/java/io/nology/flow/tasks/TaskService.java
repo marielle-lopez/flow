@@ -1,7 +1,6 @@
 package io.nology.flow.tasks;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,9 +38,6 @@ public class TaskService {
 	public Task createTask(@Valid CreateTaskDTO data) throws ParseException, ServiceValidationException {
 		ValidationErrors errors = new ValidationErrors();
 		Task newTask = modelMapper.map(data, Task.class);
-		
-		Date createdAt = new Date();
-		newTask.setCreatedAt(createdAt);
 		
 		Long categoryId = data.getCategoryId();
 		Optional<Category> maybeCategory = this.categoryService.findById(categoryId);
