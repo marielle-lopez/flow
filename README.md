@@ -12,6 +12,10 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 
 ## Task Completion History
 
+### 9 March 2024
+
+- Integrated OpenAPI 3 and Swagger UI with backend to document REST API using the help of [this YouTube video](https://www.youtube.com/watch?v=2o_3hjUPAfQ)
+
 ### 8 March 2024
 
 - Restyled `TaskModal` component to improve UI design
@@ -87,6 +91,7 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - Run frontend on port 5173
   - Otherwise, add additional origins to `allowedOrigins` array in `backend/src/main/java/io/nology/flow/config/WebConfig.java`
 - Run backend on port 8080
+- To access API documentation, navigate to this link in your browser: http://localhost:8080/swagger-ui/index.html#/
 
 ## Resources
 
@@ -116,3 +121,4 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - [Remove time after converting date `toISOString`](https://stackoverflow.com/questions/47066555/remove-time-after-converting-date-toisostring)
 - [The problem with doing bean validation on a Java Boolean](https://nieldw.medium.com/the-problem-with-doing-bean-validation-on-a-java-boolean-52988ec2e0e5)
 - [How to change React Hook Form `defaultValue` with `useEffect`](https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect/62243132#62243132)
+- [Spring boot 3 - OpenAPI Documentation | Swagger UI](https://www.youtube.com/watch?v=2o_3hjUPAfQ)
