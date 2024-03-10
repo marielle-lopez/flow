@@ -103,9 +103,10 @@ const TaskModal = () => {
 
   // FIXME: add parameter id to increase editTaskSubmit purity
   const editTaskSubmit = (data: object) => {
-    updateTaskById(modalTask.id, data).then((res) =>
-      console.log('Updated task: ', res)
-    );
+    updateTaskById(modalTask.id, data).then((res) => {
+      console.log('Updated task: ', res);
+      setRefresh((refresh: number) => refresh + 1);
+    });
   };
 
   useEffect(() => {
@@ -120,7 +121,6 @@ const TaskModal = () => {
     reset();
     setModalIsHidden(true);
     setModalTask(null);
-    setRefresh((refresh) => refresh + 1);
   }, [isSubmitSuccessful]);
 
   return (
