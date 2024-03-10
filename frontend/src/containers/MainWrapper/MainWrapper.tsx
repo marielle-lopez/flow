@@ -1,9 +1,16 @@
 import TaskForm from '../../components/TaskForm/TaskForm';
 import { createTask } from '../../services/task-services';
+import { RefreshContext } from '../../context/RefreshContextProvider';
+import { useContext } from 'react';
 
 const MainWrapper = ({ children }) => {
+  const { refresh, setRefresh } = useContext(RefreshContext);
+
   const taskFormSubmit = (task: Task) => {
-    createTask(task).then((res) => console.log(`Created task: ${res}`));
+    createTask(task).then((res) => {
+      console.log(`Created task: ${res}`);
+      setRefresh((refresh) => refresh + 1);
+    });
   };
 
   const wrapperStyles = `
