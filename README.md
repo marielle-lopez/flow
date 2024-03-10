@@ -15,6 +15,8 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 ### 9 March 2024
 
 - Integrated OpenAPI 3 and Swagger UI with backend to document REST API using the help of [this YouTube video](https://www.youtube.com/watch?v=2o_3hjUPAfQ)
+- Enabled logging of incoming HTTP requests using Spring Boot's logging filter
+  - Implemented this feature by following [this Baeldung guide](https://www.baeldung.com/spring-http-logging)
 
 ### 8 March 2024
 
@@ -122,3 +124,4 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - [The problem with doing bean validation on a Java Boolean](https://nieldw.medium.com/the-problem-with-doing-bean-validation-on-a-java-boolean-52988ec2e0e5)
 - [How to change React Hook Form `defaultValue` with `useEffect`](https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect/62243132#62243132)
 - [Spring boot 3 - OpenAPI Documentation | Swagger UI](https://www.youtube.com/watch?v=2o_3hjUPAfQ)
+- [Spring - Log Incoming Requests](https://www.baeldung.com/spring-http-logging)
