@@ -6,6 +6,13 @@
 
 Flow is more than just a task manager; it's a streamlined experience designed to enhance your workflow. With its sleek and minimalist interface, this app makes organising your day a breeze. Effortlessly add, prioritise, and complete tasks with a few taps, ensuring that you stay in the flow.
 
+## Important Notes
+
+- Run frontend on port 5173
+  - Otherwise, add additional origins to `allowedOrigins` array in `backend/src/main/java/io/nology/flow/config/WebConfig.java`
+- Run backend on port 8080
+- To access API documentation, navigate to this link in your browser: http://localhost:8080/swagger-ui/index.html#/
+
 ## To-Do
 
 Check out my [project board](https://github.com/users/marielle-lopez/projects/4/views/1) to see what's on the to-do list, what I'm currently working on, what I've done so far, and any bugs and issues I've come across; all in a condensed view.
@@ -91,13 +98,6 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 ### 29 February 2024
 
 - Started setting up and configured the Spring backend
-
-## Important Notes
-
-- Run frontend on port 5173
-  - Otherwise, add additional origins to `allowedOrigins` array in `backend/src/main/java/io/nology/flow/config/WebConfig.java`
-- Run backend on port 8080
-- To access API documentation, navigate to this link in your browser: http://localhost:8080/swagger-ui/index.html#/
 
 ## Resources
 
