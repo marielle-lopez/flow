@@ -53,8 +53,15 @@ const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
     resolver: zodResolver(schema),
     defaultValues: {
       dueAt: currentDate(),
+      categoryId: categories[0],
     },
   });
+
+  useEffect(() => {
+    reset({
+      categoryId: categories[0],
+    });
+  }, [categories]);
 
   useEffect(() => {
     reset();
