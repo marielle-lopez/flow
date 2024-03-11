@@ -1,4 +1,18 @@
+import { useContext, useEffect } from 'react';
+import { ToastContext } from '../../context/ToastContextProvider';
+
 const Toast = () => {
+  const {
+    toastIsTriggered,
+    setToastIsTriggered,
+    toastIsHidden,
+    setToastIsHidden,
+    toastMessage,
+    setToastMessage,
+    toastIcon,
+    setToastIcon,
+  } = useContext(ToastContext);
+
   const toastStyles = `
     flex 
     items-center 
@@ -14,6 +28,7 @@ const Toast = () => {
     border 
     border-charade 
     rounded-xl 
+    drop-shadow-md 
   `;
 
   const toastIconStyles = `
@@ -29,14 +44,14 @@ const Toast = () => {
   `;
 
   return (
-    <div className={toastStyles}>
+    <div className={toastStyles + `${toastIsHidden ? 'hidden' : ''}`}>
       <div className="flex items-center gap-4">
         <img
           className={toastIconStyles}
           src="./src/assets/icons/tick.png"
           alt="Tick icon"
         />
-        <p>Toast message goes here</p>
+        <p>{toastMessage}</p>
       </div>
       <button>
         <img
