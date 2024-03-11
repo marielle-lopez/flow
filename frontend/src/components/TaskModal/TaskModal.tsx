@@ -7,12 +7,19 @@ import { formatDate } from '../../global/helpers';
 import { RefreshContext } from '../../context/RefreshContextProvider';
 import { updateTaskById } from '../../services/task-services';
 import { CategoriesContext } from '../../context/CategoriesContextProvider';
+import { ToastContext } from '../../context/ToastContextProvider';
 
 const TaskModal = () => {
   const { modalIsHidden, setModalIsHidden, modalTask, setModalTask } =
     useContext(ModalContext);
   const { refresh, setRefresh } = useContext(RefreshContext);
   const { categories } = useContext(CategoriesContext);
+  const {
+    toastIsTriggered,
+    setToastIsTriggered,
+    toastMessage,
+    setToastMessage,
+  } = useContext(ToastContext);
 
   const schema = z.object({
     title: z.string().min(1, { message: 'Title required' }),
@@ -106,6 +113,8 @@ const TaskModal = () => {
     updateTaskById(modalTask.id, data).then((res) => {
       console.log('Updated task: ', res);
       setRefresh((refresh: number) => refresh + 1);
+      setToastMessage('Task successfully edited');
+      setToastIsTriggered(toastIsTriggered + 1);
     });
   };
 
