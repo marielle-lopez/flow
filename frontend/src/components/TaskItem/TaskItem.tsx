@@ -4,16 +4,25 @@ import { deleteTaskById, updateTaskById } from '../../services/task-services';
 import { RefreshContext } from '../../context/RefreshContextProvider';
 import { ModalContext } from '../../context/ModalContextProvider';
 import { formatDate } from '../../global/helpers';
+import { ToastContext } from '../../context/ToastContextProvider';
 
 const TaskItem = ({ task }: { task: Task }) => {
   const { refresh, setRefresh } = useContext(RefreshContext);
   const { modalIsHidden, setModalIsHidden, modalTask, setModalTask } =
     useContext(ModalContext);
+  const { toastIsTriggered, setToastIsTriggered, setToastMessage } =
+    useContext(ToastContext);
 
   const handleChange = () => {
     updateTaskById(task.id, { isCompleted: !task.isCompleted }).then((res) => {
       console.log(`Task completion status changed: `, res);
-      return setRefresh((refresh: number) => refresh + 1);
+      setToastMessage(
+        task.isCompleted
+          ? 'Task marked as incomplete'
+          : 'Task marked as complete'
+      );
+      setToastIsTriggered(toastIsTriggered + 1);
+      setRefresh((refresh: number) => refresh + 1);
     });
   };
 
@@ -21,7 +30,9 @@ const TaskItem = ({ task }: { task: Task }) => {
     console.log('Delete button clicked!');
     deleteTaskById(task.id).then(() => {
       console.log(`Task '${task.title}' with ID ${task.id} deleted.`);
-      return setRefresh((refresh: number) => refresh + 1);
+      setToastMessage('Task successfully deleted');
+      setToastIsTriggered(toastIsTriggered + 1);
+      setRefresh((refresh: number) => refresh + 1);
     });
   };
 
