@@ -19,6 +19,11 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 
 ## Task Completion History
 
+### 10 March 2024
+
+- Created Toast component which acts as a pop-up notification when certain events occur (e.g., when a user successfully creates, edits, marks off/unmarks or deletes a task)
+  - In order to make this component dynamic, I created a context `ToastContext` which holds content (states) related to the Toast component, such as the message and icon to be displayed, and whether or not it should be appearing on the page
+
 ### 9 March 2024
 
 - Integrated OpenAPI 3 and Swagger UI with backend to document REST API using the help of [this YouTube video](https://www.youtube.com/watch?v=2o_3hjUPAfQ)
@@ -116,6 +121,7 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - [Plus](https://img.icons8.com/fluency-systems-regular/96/000000/plus-math--v1.png)
 - [Cross](https://img.icons8.com/fluency-systems-filled/48/multiply.png)
 - [Pencil](https://img.icons8.com/windows/32/000000/edit--v1.png)
+- [Tick](https://img.icons8.com/fluency-systems-filled/48/checkmark.png)
 
 ### Bits and Bobs
 
