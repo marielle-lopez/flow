@@ -19,6 +19,10 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 
 ## Task Completion History
 
+### 11 March 2024
+
+- Started implementing error handling for API calling
+
 ### 10 March 2024
 
 - Created Toast component which acts as a pop-up notification when certain events occur (e.g., when a user successfully creates, edits, marks off/unmarks or deletes a task)
