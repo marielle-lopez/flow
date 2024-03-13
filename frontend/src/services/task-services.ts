@@ -19,7 +19,7 @@ export const getAllTasks = async () => {
   const response = await fetch('http://localhost:8080/tasks');
 
   if (!response.ok) {
-    throw new Error('Failed to get tasks');
+    throw new Error('Failed to get all tasks');
   }
 
   const tasks = await response.json();
@@ -55,8 +55,11 @@ export const updateTaskById = async (id: number, data: object) => {
 };
 
 export const deleteTaskById = async (id: number) => {
-  // add error handling?
-  await fetch(`http://localhost:8080/tasks/${id}`, {
+  const response = await fetch(`http://localhost:8080/tasks/${id}`, {
     method: 'DELETE',
   });
+
+  if (response.status !== 204) {
+    throw new Error(`Failed to delete task ${id}`);
+  }
 };
