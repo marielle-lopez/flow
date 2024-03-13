@@ -8,7 +8,11 @@
 
 <br />
 
-![Flow UI screenshot](./ui-ux.gif)
+<div style='text-align: center;'>
+  <img src='./ui-ux.gif' alt='Flow UI/UX mini demonstration' />
+</div>
+
+<br />
 
 Flow is more than just a task manager; it's a streamlined experience designed to enhance your workflow. With its sleek and minimalist interface, this app makes organising your day a breeze. Effortlessly add, prioritise, and complete tasks with a few taps, ensuring that you stay in the flow.
 
