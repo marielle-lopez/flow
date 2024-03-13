@@ -7,3 +7,8 @@ interface Task {
   categoryId: number;
   isCompleted: boolean;
 }
+
+interface Category {
+  id: number;
+  name: string;
+}
