@@ -1,8 +1,14 @@
 # ![Flow](./logo-md.png)
 
+<br />
+
 > “A state in which people are so involved in an activity that nothing else seems to matter…”
 >
 > _- Mihaly Csikszentmihalyi_
+
+<br />
+
+![Flow UI screenshot](ui.png)
 
 Flow is more than just a task manager; it's a streamlined experience designed to enhance your workflow. With its sleek and minimalist interface, this app makes organising your day a breeze. Effortlessly add, prioritise, and complete tasks with a few taps, ensuring that you stay in the flow.
 
