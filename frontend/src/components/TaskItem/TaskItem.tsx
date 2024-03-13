@@ -10,30 +10,48 @@ const TaskItem = ({ task }: { task: Task }) => {
   const { refresh, setRefresh } = useContext(RefreshContext);
   const { modalIsHidden, setModalIsHidden, modalTask, setModalTask } =
     useContext(ModalContext);
-  const { toastIsTriggered, setToastIsTriggered, setToastMessage } =
-    useContext(ToastContext);
+  const {
+    toastIsTriggered,
+    setToastIsTriggered,
+    setToastMessage,
+    setToastIcon,
+  } = useContext(ToastContext);
 
   const handleChange = () => {
-    updateTaskById(task.id, { isCompleted: !task.isCompleted }).then((res) => {
-      console.log(`Task completion status changed: `, res);
-      setToastMessage(
-        task.isCompleted
-          ? 'Task marked as incomplete'
-          : 'Task marked as complete'
-      );
-      setToastIsTriggered(toastIsTriggered + 1);
-      setRefresh((refresh: number) => refresh + 1);
-    });
+    updateTaskById(task.id, { isCompleted: !task.isCompleted })
+      .then((res) => {
+        console.log(`Task completion status changed: `, res);
+        setToastMessage(
+          task.isCompleted
+            ? 'Task marked as incomplete'
+            : 'Task marked as complete'
+        );
+        setToastIcon('./src/assets/icons/tick.png');
+        setToastIsTriggered(toastIsTriggered + 1);
+        setRefresh((refresh: number) => refresh + 1);
+      })
+      .catch((e) => {
+        setToastMessage(e.message);
+        setToastIcon('./src/assets/icons/cross.png');
+        setToastIsTriggered(toastIsTriggered + 1);
+      });
   };
 
   const handleDelete = () => {
     console.log('Delete button clicked!');
-    deleteTaskById(task.id).then(() => {
-      console.log(`Task '${task.title}' with ID ${task.id} deleted.`);
-      setToastMessage('Task successfully deleted');
-      setToastIsTriggered(toastIsTriggered + 1);
-      setRefresh((refresh: number) => refresh + 1);
-    });
+    deleteTaskById(task.id)
+      .then(() => {
+        console.log(`Task '${task.title}' with ID ${task.id} deleted.`);
+        setToastMessage('Task successfully deleted');
+        setToastIcon('./src/assets/icons/tick.png');
+        setToastIsTriggered(toastIsTriggered + 1);
+        setRefresh((refresh: number) => refresh + 1);
+      })
+      .catch((e) => {
+        setToastMessage(e.message);
+        setToastIcon('./src/assets/icons/cross.png');
+        setToastIsTriggered(toastIsTriggered + 1);
+      });
   };
 
   const taskItemStyles = `
