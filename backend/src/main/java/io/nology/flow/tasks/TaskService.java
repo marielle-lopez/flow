@@ -1,6 +1,5 @@
 package io.nology.flow.tasks;
 
-import java.text.ParseException;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -34,7 +33,6 @@ public class TaskService {
 	public List<Task> getAllTasks() {
 		return this.taskRepository.findAll();
 	}
-	
 
 //	public List<Task> getTasksByCategory(String category) {
 //		return this.taskRepository.find;
@@ -44,14 +42,14 @@ public class TaskService {
 		return this.taskRepository.findById(id);
 	}
 	
-	public Task createTask(@Valid CreateTaskDTO data) throws ParseException, ServiceValidationException {
+	public Task createTask(@Valid CreateTaskDTO data) throws ServiceValidationException {
 		ValidationErrors errors = new ValidationErrors();
 		Task newTask = modelMapper.map(data, Task.class);
 		
 		Long categoryId = data.getCategoryId();
 		Optional<Category> maybeCategory = this.categoryService.findById(categoryId);
 		if (maybeCategory.isEmpty()) {
-			errors.addError("category", String.format("Category with id %s does not exist", categoryId));
+			errors.addError("category", String.format("Category with ID %s does not exist", categoryId));
 		} else {
 			newTask.setCategory(maybeCategory.get());
 		}
@@ -65,9 +63,8 @@ public class TaskService {
 		return this.taskRepository.save(newTask);
 	}
 
-	public Optional<Task> updateById(Long id, @Valid UpdateTaskDTO data) throws ParseException, ServiceValidationException {
+	public Optional<Task> updateById(Long id, @Valid UpdateTaskDTO data) throws ServiceValidationException {
 		ValidationErrors errors = new ValidationErrors();
-		
 		Optional<Task> maybeTask = this.getTaskById(id);
 		
 		if (maybeTask.isEmpty()) {
@@ -75,24 +72,42 @@ public class TaskService {
 		}
 		
 		Task foundTask = maybeTask.get();
-
-		foundTask.setTitle(data.getTitle().trim());
-//		foundTask.setDescription(data.getDescription().trim());
 		
-		TemporalAccessor ta = DateTimeFormatter.ISO_INSTANT.parse(data.getDueAt());
-		Instant i = Instant.from(ta);
-		Date newDueAt = Date.from(i);
-		
-		foundTask.setDueAt(newDueAt);
-		
-		Long categoryId = data.getCategoryId();
-		Optional<Category> maybeCategory = this.categoryService.findById(categoryId);
-		
-		if (maybeCategory.isEmpty()) {
-			errors.addError("category", String.format("Category with ID %d does not exist", categoryId));
+		if (data.getTitle() != null) {			
+			foundTask.setTitle(data.getTitle().trim());
 		}
 		
-		foundTask.setCategory(maybeCategory.get());
+		if (data.getDescription() != null) {			
+			foundTask.setDescription(data.getDescription().trim());
+		}
+		
+		if (data.getIsCompleted() != null) {			
+			if (data.getIsCompleted().equals("true")) {
+				foundTask.setIsCompleted(true);
+			} else {				
+				foundTask.setIsCompleted(false);
+			}
+		}
+
+		if (data.getDueAt() != null) {			
+			TemporalAccessor ta = DateTimeFormatter.ISO_INSTANT.parse(data.getDueAt());
+			Instant i = Instant.from(ta);
+			Date newDueAt = Date.from(i);
+			
+			foundTask.setDueAt(newDueAt);
+		}
+		
+		if (data.getCategoryId() != null) {			
+			Long categoryId = data.getCategoryId();
+			Optional<Category> maybeCategory = this.categoryService.findById(categoryId);
+			
+			if (maybeCategory.isEmpty()) {
+				errors.addError("category", String.format("Category with ID %d does not exist", categoryId));
+			}
+			
+			foundTask.setCategory(maybeCategory.get());
+		}
+		
 		
 		if (errors.hasErrors()) {
 			throw new ServiceValidationException(errors);
