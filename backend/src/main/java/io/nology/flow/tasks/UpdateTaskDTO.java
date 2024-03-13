@@ -58,4 +58,10 @@ public class UpdateTaskDTO {
 	public void setIsCompleted(String isCompleted) {
 		this.isCompleted = isCompleted;
 	}
+
+	@Override
+	public String toString() {
+		return "UpdateTaskDTO [title=" + title + ", description=" + description + ", dueAt=" + dueAt + ", categoryId="
+				+ categoryId + ", isCompleted=" + isCompleted + "]";
+	}
 }
