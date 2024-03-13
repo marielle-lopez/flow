@@ -45,6 +45,13 @@ public class TaskController {
 		return new ResponseEntity<>(foundTask, HttpStatus.OK);
 	}
 	
+//	@GetMapping("/{category}")
+//	@Operation(summary = "Gets all tasks of a specified category")
+//	public ResponseEntity<List<Task>> getTasksByCategory(@PathVariable String category) throws NotFoundException {
+//		List<Task> tasks = this.taskService.getTasksByCategory(category);
+//		return new ResponseEntity<>(tasks, HttpStatus.OK);
+//	}
+	
 	@PostMapping()
 	@Operation(summary = "Creates a task")
 	public ResponseEntity<Task> createTask(@Valid @RequestBody CreateTaskDTO data) throws ParseException, ServiceValidationException {
@@ -54,8 +61,7 @@ public class TaskController {
 	
 	@PatchMapping("/{id}")
 	@Operation(summary = "Updates a task via ID")
-	public ResponseEntity<Task> updateTaskById(@PathVariable Long id, @Valid @RequestBody UpdateTaskDTO data) throws NotFoundException, ParseException {
-		System.out.println(data);
+	public ResponseEntity<Task> updateTaskById(@PathVariable Long id, @Valid @RequestBody UpdateTaskDTO data) throws NotFoundException, ParseException, ServiceValidationException {
 		Optional<Task> maybeUpdatedTask = this.taskService.updateById(id, data);
 		Task updatedTask = maybeUpdatedTask.orElseThrow(() -> new NotFoundException(Task.class, id));
 		return new ResponseEntity<>(updatedTask, HttpStatus.OK);
@@ -64,7 +70,7 @@ public class TaskController {
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Deletes a task by ID")
 	public ResponseEntity<Task> deleteTaskById(@PathVariable Long id) throws NotFoundException {
-		boolean deleted = this.taskService.deletePostById(id);
+		boolean deleted = this.taskService.deleteTaskById(id);
 		
 		if (!deleted) {
 			throw new NotFoundException(Task.class, id);
