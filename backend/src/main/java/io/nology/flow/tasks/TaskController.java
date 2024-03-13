@@ -1,6 +1,5 @@
 package io.nology.flow.tasks;
 
-import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,14 +53,14 @@ public class TaskController {
 	
 	@PostMapping()
 	@Operation(summary = "Creates a task")
-	public ResponseEntity<Task> createTask(@Valid @RequestBody CreateTaskDTO data) throws ParseException, ServiceValidationException {
+	public ResponseEntity<Task> createTask(@Valid @RequestBody CreateTaskDTO data) throws ServiceValidationException {
 		Task createdTask = this.taskService.createTask(data);
 		return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
 	}
 	
 	@PatchMapping("/{id}")
 	@Operation(summary = "Updates a task via ID")
-	public ResponseEntity<Task> updateTaskById(@PathVariable Long id, @Valid @RequestBody UpdateTaskDTO data) throws NotFoundException, ParseException, ServiceValidationException {
+	public ResponseEntity<Task> updateTaskById(@PathVariable Long id, @Valid @RequestBody UpdateTaskDTO data) throws NotFoundException, ServiceValidationException {
 		Optional<Task> maybeUpdatedTask = this.taskService.updateById(id, data);
 		Task updatedTask = maybeUpdatedTask.orElseThrow(() -> new NotFoundException(Task.class, id));
 		return new ResponseEntity<>(updatedTask, HttpStatus.OK);
