@@ -75,4 +75,10 @@ public class Task extends BaseEntity {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	@Override
+	public String toString() {
+		return "Task [title=" + title + ", dueAt=" + dueAt + ", description=" + description + ", isCompleted="
+				+ isCompleted + ", categoryId=" + category.getId() + ",categoryName=" + category.getName() + "]";
+	}
 }
