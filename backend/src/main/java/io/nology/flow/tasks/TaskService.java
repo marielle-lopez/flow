@@ -1,6 +1,10 @@
 package io.nology.flow.tasks;
 
 import java.text.ParseException;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +34,11 @@ public class TaskService {
 	public List<Task> getAllTasks() {
 		return this.taskRepository.findAll();
 	}
+	
+
+//	public List<Task> getTasksByCategory(String category) {
+//		return this.taskRepository.find;
+//	}
 
 	public Optional<Task> getTaskById(Long id) {
 		return this.taskRepository.findById(id);
@@ -56,7 +65,9 @@ public class TaskService {
 		return this.taskRepository.save(newTask);
 	}
 
-	public Optional<Task> updateById(Long id, @Valid UpdateTaskDTO data) throws ParseException {
+	public Optional<Task> updateById(Long id, @Valid UpdateTaskDTO data) throws ParseException, ServiceValidationException {
+		ValidationErrors errors = new ValidationErrors();
+		
 		Optional<Task> maybeTask = this.getTaskById(id);
 		
 		if (maybeTask.isEmpty()) {
@@ -64,12 +75,39 @@ public class TaskService {
 		}
 		
 		Task foundTask = maybeTask.get();
-		modelMapper.map(data, foundTask);
+
+		foundTask.setTitle(data.getTitle().trim());
+//		foundTask.setDescription(data.getDescription().trim());
+		
+		TemporalAccessor ta = DateTimeFormatter.ISO_INSTANT.parse(data.getDueAt());
+		Instant i = Instant.from(ta);
+		Date newDueAt = Date.from(i);
+		
+		foundTask.setDueAt(newDueAt);
+		
+		Long categoryId = data.getCategoryId();
+		Optional<Category> maybeCategory = this.categoryService.findById(categoryId);
+		
+		if (maybeCategory.isEmpty()) {
+			errors.addError("category", String.format("Category with ID %d does not exist", categoryId));
+		}
+		
+		foundTask.setCategory(maybeCategory.get());
+		
+		if (errors.hasErrors()) {
+			throw new ServiceValidationException(errors);
+		}
+		
+//		System.out.println("categoryId to update to:" + data.getCategoryId());
+//		System.out.println("Task before ModelMapper:" + foundTask);
+//		modelMapper.map(data, foundTask);
+//		System.out.println("Task after ModelMapper:" + foundTask);
+		
 		Task updatedTask = this.taskRepository.save(foundTask);
 		return Optional.of(updatedTask);
 	}
 
-	public boolean deletePostById(Long id) {
+	public boolean deleteTaskById(Long id) {
 		Optional<Task> maybeTask = this.taskRepository.findById(id);
 		
 		if (maybeTask.isEmpty()) {
