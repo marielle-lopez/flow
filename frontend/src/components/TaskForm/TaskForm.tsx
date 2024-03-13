@@ -24,7 +24,12 @@ const inputStyles = `
   placeholder-river-bed 
 `;
 
-const TaskForm = ({ taskFormSubmit = (_data: object) => {} }) => {
+// { taskFormSubmit = (_data: object) => {} }
+const TaskForm = ({
+  taskFormSubmit,
+}: {
+  taskFormSubmit: (data: object) => void;
+}) => {
   const { categories } = useContext(CategoriesContext);
 
   const currentDate = (): string => {
