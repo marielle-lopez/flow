@@ -19,6 +19,13 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 
 ## Task Completion History
 
+### 12 March 2024
+
+- **Finally** fixed the bug associated with updating a task's category
+  - The issue was the `ModelMapper` modifying the primary key of the category the user was changing from
+  - Instead of using `ModelMapper` in `updateTaskById()`, the task's data is updated manually
+    - In the case of updating a task's category, `updateTaskById()` now retrieves the category with the given `categoryId`, and such category is passed to `setCategory()`; `setCategory()` is called on `foundTask` (the found Task instance with the given task ID)
+
 ### 11 March 2024
 
 - Started implementing error handling for API calling
