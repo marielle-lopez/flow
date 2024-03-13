@@ -46,11 +46,7 @@ const Toast = () => {
   return (
     <div className={toastStyles + `${toastIsHidden ? 'hidden' : ''}`}>
       <div className="flex items-center gap-4">
-        <img
-          className={toastIconStyles}
-          src="./src/assets/icons/tick.png"
-          alt="Tick icon"
-        />
+        <img className={toastIconStyles} src={toastIcon} alt="Toast icon" />
         <p>{toastMessage}</p>
       </div>
       <button>
