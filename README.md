@@ -36,6 +36,8 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
   - Instead of using `ModelMapper` in `updateTaskById()`, the task's data is updated manually
     - In the case of updating a task's category, `updateTaskById()` now retrieves the category with the given `categoryId`, and such category is passed to `setCategory()`; `setCategory()` is called on `foundTask` (the found Task instance with the given task ID)
 - Added error handling in the frontend and backend
+- For the frontend, set up component testing and installed Vitest (Vite uses Vitest)
+  - In this project, the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) will be used
 
 ### 11 March 2024
 
@@ -157,3 +159,4 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - [How to change React Hook Form `defaultValue` with `useEffect`](https://stackoverflow.com/questions/62242657/how-to-change-react-hook-form-defaultvalue-with-useeffect/62243132#62243132)
 - [Spring boot 3 - OpenAPI Documentation | Swagger UI](https://www.youtube.com/watch?v=2o_3hjUPAfQ)
 - [Spring - Log Incoming Requests](https://www.baeldung.com/spring-http-logging)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
