@@ -1,10 +1,5 @@
 type Nullable<T> = T | undefined | null;
 
-interface Icon {
-  path: string;
-  alt: string;
-}
-
 interface ButtonProps {
   label?: Nullable<string>;
   icon?: Nullable<Icon>;
