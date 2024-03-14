@@ -29,6 +29,10 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 
 ## Task Completion History
 
+### 14 March 2024
+
+- Continued creating tests for components
+
 ### 13 March 2024
 
 - Created tests for components
