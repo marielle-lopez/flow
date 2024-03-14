@@ -29,6 +29,10 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 
 ## Task Completion History
 
+### 13 March 2024
+
+- Created tests for components
+
 ### 12 March 2024
 
 - **Finally** fixed the bug associated with updating a task's category
