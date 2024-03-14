@@ -31,13 +31,9 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 
 ### 14 March 2024
 
-- Continued creating tests for components
-
-### 13 March 2024
-
 - Created tests for components
 
-### 12 March 2024
+### 13 March 2024
 
 - **Finally** fixed the bug associated with updating a task's category
   - The issue was the `ModelMapper` modifying the primary key of the category the user was changing from
@@ -47,16 +43,16 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 - For the frontend, set up component testing and installed Vitest (Vite uses Vitest)
   - In this project, the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) will be used
 
-### 11 March 2024
+### 12 March 2024
 
 - Started implementing error handling for API calling
 
-### 10 March 2024
+### 11 March 2024
 
 - Created Toast component which acts as a pop-up notification when certain events occur (e.g., when a user successfully creates, edits, marks off/unmarks or deletes a task)
   - In order to make this component dynamic, I created a context `ToastContext` which holds content (states) related to the Toast component, such as the message and icon to be displayed, and whether or not it should be appearing on the page
 
-### 9 March 2024
+### 10 March 2024
 
 - Integrated OpenAPI 3 and Swagger UI with backend to document REST API using the help of [this YouTube video](https://www.youtube.com/watch?v=2o_3hjUPAfQ)
 - Enabled logging of incoming HTTP requests using Spring Boot's logging filter
