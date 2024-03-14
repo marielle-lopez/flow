@@ -12,3 +12,8 @@ interface Category {
   id: number;
   name: string;
 }
+
+interface Icon {
+  path: string;
+  alt: string;
+}
