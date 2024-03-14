@@ -32,6 +32,8 @@ Check out my [project board](https://github.com/users/marielle-lopez/projects/4/
 ### 14 March 2024
 
 - Created tests for components
+  - While creating these tests, I've realised my components can be much more 'pure'
+  - Additionally, some components like `Toast` and `ToastModal` rely on contexts, which I am currently unsure of how to test with - further research will be needed for this, or I could think about how I could improve these components
 
 ### 13 March 2024
 
