@@ -15,6 +15,7 @@ const Checkbox = ({
       type="checkbox"
       onChange={handleChange}
       defaultChecked={isChecked}
+      aria-checked={isChecked}
     />
   );
 };
